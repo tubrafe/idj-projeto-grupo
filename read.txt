@@ -1,0 +1,32 @@
+mingw32-make
+mingw32-make clean
+mingw32-make debug
+
+
+        if((associated.box.y + 57 == chao->getY()) and (associated.box.x != chao->getX() + chao->getLength()) and (associated.box.x != chao->getX())){
+            associated.box.y = chao->getY() - 57;
+            speed.y = 0;
+            caindo = false;
+
+        }
+
+        else if((associated.box.y == chao->getY() + chao->getHigh()) and (associated.box.x != chao->getX() + chao->getLength()) and (associated.box.x != chao->getX())){
+            associated.box.y = chao->getY() + chao->getHigh();
+            speed.y = 0;
+        }
+
+
+
+        else if(associated.box.x == meio.x  + chao->getLength()){
+            associated.box.x = chao->getX()- 48;
+            speed.x = 0;
+
+        }
+
+        else if((associated.box.y + 57 >= chao->getY()) and (associated.box.y + 57 < meio.y)){
+
+            associated.box.y = chao->getY() - 57;
+            speed.y = 0;
+            caindo = false;
+        }
+    }
