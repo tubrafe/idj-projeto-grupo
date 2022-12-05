@@ -36,6 +36,8 @@ class Collider : public Component{
         Vec2 offset; 
 
 
+
+
 };
 
 

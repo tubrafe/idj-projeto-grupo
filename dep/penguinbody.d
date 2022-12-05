@@ -296,7 +296,8 @@ dep/penguinbody.d bin/penguinbody.o: src/penguinbody.cpp \
  src/../include/alien.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
- src/../include/minion.h src/../include/bloco.h src/../include/sprite.h
+ src/../include/minion.h src/../include/bloco.h src/../include/sprite.h \
+ src/../include/collider.h
 src/../include/penguinbody.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -622,3 +623,4 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 src/../include/minion.h:
 src/../include/bloco.h:
 src/../include/sprite.h:
+src/../include/collider.h:

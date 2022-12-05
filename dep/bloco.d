@@ -232,17 +232,26 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  src/../include/component.h src/../include/vec2.h src/../include/sprite.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_image.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h \
- src/../include/timer.h \
+ src/../include/timer.h src/../include/collider.h src/../include/rect.h \
+ src/../include/../src/Collision.cpp include/Rect.h include/Vec2.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_relops.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_tempbuf.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
+ C:/TDM-GCC-32/include/math.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/memory \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_tempbuf.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_raw_storage_iter.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ranges_uninitialized.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ext/concurrence.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uses_allocator.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unique_ptr.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_relops.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/tuple \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/array \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/invoke.h \
@@ -263,31 +272,20 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
  src/../include/state.h src/../include/../include/music.h \
  src/../include/../include/SDL_include.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h \
  src/../include/../include/sprite.h \
  src/../include/../include/gameobject.h src/../include/../include/rect.h \
- src/../include/../include/vec2.h src/../include/../include/sound.h \
- src/../include/../include/component.h src/../include/../include/vec2.h \
- src/../include/../include/tilemap.h src/../include/../include/tileset.h \
- src/../include/../include/sprite.h \
+ src/../include/../include/sound.h src/../include/../include/component.h \
+ src/../include/../include/vec2.h src/../include/../include/tilemap.h \
+ src/../include/../include/tileset.h src/../include/../include/sprite.h \
  src/../include/../include/gameobject.h src/../include/game.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stack \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h \
  src/../include/state.h src/../include/titlestate.h \
- src/../include/../include/state.h src/../include/collider.h \
- src/../include/rect.h src/../include/../src/Collision.cpp include/Rect.h \
- include/Vec2.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
- C:/TDM-GCC-32/include/math.h
+ src/../include/../include/state.h
 src/../include/bloco.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -535,16 +533,29 @@ src/../include/sprite.h:
 D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_image.h:
 D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h:
 src/../include/timer.h:
+src/../include/collider.h:
+src/../include/rect.h:
+src/../include/../src/Collision.cpp:
+include/Rect.h:
+include/Vec2.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_relops.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_tempbuf.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
+C:/TDM-GCC-32/include/math.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/memory:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_uninitialized.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_tempbuf.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_raw_storage_iter.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ranges_uninitialized.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ext/concurrence.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uses_allocator.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unique_ptr.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_relops.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/tuple:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/array:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/invoke.h:
@@ -565,7 +576,6 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 src/../include/state.h:
 src/../include/../include/music.h:
@@ -574,7 +584,6 @@ D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h:
 src/../include/../include/sprite.h:
 src/../include/../include/gameobject.h:
 src/../include/../include/rect.h:
-src/../include/../include/vec2.h:
 src/../include/../include/sound.h:
 src/../include/../include/component.h:
 src/../include/../include/vec2.h:
@@ -588,15 +597,3 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h:
 src/../include/state.h:
 src/../include/titlestate.h:
 src/../include/../include/state.h:
-src/../include/collider.h:
-src/../include/rect.h:
-src/../include/../src/Collision.cpp:
-include/Rect.h:
-include/Vec2.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
-C:/TDM-GCC-32/include/math.h:

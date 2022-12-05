@@ -258,7 +258,23 @@ dep/jogador.d bin/jogador.o: src/jogador.cpp src/../include/jogador.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_image.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h \
  src/../include/component.h src/../include/vec2.h src/../include/rect.h \
- src/../include/timer.h src/../include/sprite.h src/../include/state.h \
+ src/../include/timer.h src/../include/bloco.h src/../include/sprite.h \
+ src/../include/collider.h src/../include/../src/Collision.cpp \
+ include/Rect.h include/Vec2.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
+ C:/TDM-GCC-32/include/math.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
+ src/../include/sprite.h src/../include/state.h \
  src/../include/../include/music.h \
  src/../include/../include/SDL_include.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h \
@@ -269,32 +285,17 @@ dep/jogador.d bin/jogador.o: src/jogador.cpp src/../include/jogador.h \
  src/../include/../include/tileset.h src/../include/../include/sprite.h \
  src/../include/../include/gameobject.h src/../include/game.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stack \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h \
  src/../include/state.h src/../include/titlestate.h \
  src/../include/../include/state.h src/../include/inputmanager.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
- src/../include/collider.h src/../include/../src/Collision.cpp \
- include/Rect.h include/Vec2.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath \
- C:/TDM-GCC-32/include/math.h src/../include/bullet.h \
+ src/../include/collider.h src/../include/bullet.h \
  src/../include/camera.h src/../include/gameobject.h \
- src/../include/alien.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
- src/../include/minion.h src/../include/bloco.h src/../include/sprite.h
+ src/../include/alien.h src/../include/minion.h
 src/../include/jogador.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -568,6 +569,25 @@ src/../include/component.h:
 src/../include/vec2.h:
 src/../include/rect.h:
 src/../include/timer.h:
+src/../include/bloco.h:
+src/../include/sprite.h:
+src/../include/collider.h:
+src/../include/../src/Collision.cpp:
+include/Rect.h:
+include/Vec2.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
+C:/TDM-GCC-32/include/math.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 src/../include/sprite.h:
 src/../include/state.h:
 src/../include/../include/music.h:
@@ -585,9 +605,6 @@ src/../include/../include/sprite.h:
 src/../include/../include/gameobject.h:
 src/../include/game.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stack:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h:
 src/../include/state.h:
 src/../include/titlestate.h:
@@ -596,26 +613,11 @@ src/../include/inputmanager.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h:
 src/../include/collider.h:
-src/../include/../src/Collision.cpp:
-include/Rect.h:
-include/Vec2.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_algo.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/algorithmfwd.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_heap.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/uniform_int_dist.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/cmath:
-C:/TDM-GCC-32/include/math.h:
 src/../include/bullet.h:
 src/../include/camera.h:
 src/../include/gameobject.h:
 src/../include/alien.h:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue:
-C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 src/../include/minion.h:
-src/../include/bloco.h:
-src/../include/sprite.h:

@@ -8,6 +8,7 @@
 #include "component.h"
 #include "vec2.h"
 #include "sprite.h"
+#include "collider.h"
 #include <memory>
 #include <vector>
 #include <queue>
@@ -17,7 +18,7 @@ class GameObject;
 class Bloco : public Component {
 
     public:
-        Bloco(GameObject& associated,  std :: string file, float posx, float posy);
+        Bloco(GameObject& associated,  std :: string file, float posx, float posy, std::string tipo, Vec2 escala);
         ~Bloco();
         void Start();
         
@@ -33,6 +34,15 @@ class Bloco : public Component {
         Vec2 getcenter();
 
         bool Contains(Vec2 vetor);
+
+        std::string getTipo();
+
+
+    private:
+
+        std::string tipo;
+
+        Collider* colisor;
 };
 
 

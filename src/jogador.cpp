@@ -8,7 +8,7 @@
 #include "../include/camera.h"
 #include "../include/alien.h"
 #include "../include/minion.h"
-#include "../include/bloco.h"
+
 
 Jogador* Jogador::player = nullptr;
 
@@ -18,7 +18,7 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
 
     hp = 5;
     angle = 0;
-    linearSpeed = 1;
+    atrito = 1;
     speed = Vec2(0,0);
 
     player = this;
@@ -38,6 +38,9 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     caindo = false;
     parado = false;
     agarrado = false;
+
+    checkpoint.x = associated.box.x;
+    checkpoint.y = associated.box.y;
 
 
 }
@@ -178,10 +181,10 @@ void Jogador :: Update (float dt){
     }
     else{
         if(speed.x > 0){
-            speed.x = speed.x - linearSpeed;
+            speed.x = speed.x - atrito;
         }
         else if (speed.x < 0){
-            speed.x = speed.x + linearSpeed;
+            speed.x = speed.x + atrito;
         }
         else{
             speed.x = 0;
@@ -292,6 +295,26 @@ void Jogador :: NotifyCollision ( GameObject& other){
 
 
     if(chao != nullptr){
+        movimentacaoTipoChao(chao);
+    }
+
+
+}
+
+
+
+Rect Jogador :: GetPos(){
+
+    return associated.box;
+
+}
+
+
+
+void Jogador :: movimentacaoTipoChao(Bloco *chao){
+
+
+    if(chao->getTipo() == "terra"){
 
 
         if((chao->Contains(Vec2(associated.box.x, associated.box.y)) and (chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y))))){
@@ -452,12 +475,12 @@ void Jogador :: NotifyCollision ( GameObject& other){
         }
     }
 
-}
 
+    if(chao->getTipo() == "lava"){
 
+        hp = hp - 1;
+        associated.box.x = checkpoint.x;
+        associated.box.y = checkpoint.y;
 
-Rect Jogador :: GetPos(){
-
-    return associated.box;
-
+    }
 }

@@ -12,6 +12,7 @@
 #include "vec2.h"
 #include "rect.h"
 #include "timer.h"
+#include "bloco.h"
 
 
 class GameObject;
@@ -33,9 +34,11 @@ class Jogador : public Component{
 
         Rect GetPos();
 
+        void movimentacaoTipoChao(Bloco *chao);
+
     private:
         Vec2 speed;
-        float linearSpeed;
+        float atrito;
         float angle;
         int hp;
 
@@ -57,6 +60,8 @@ class Jogador : public Component{
 
         float posyh_anterior;
         float posy_anterior;
+
+        Vec2 checkpoint;
 
 };
 
