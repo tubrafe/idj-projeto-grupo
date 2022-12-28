@@ -5,6 +5,7 @@
 #include "../include/camera.h"
 #include "../include/text.h"
 
+// tela incial do jogo
 
 TitleState :: TitleState(){
 

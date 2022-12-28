@@ -1,7 +1,7 @@
 #include "../include/tileset.h"
 
 
-
+// cria um tileset n esta sendo usado no momento
 
 TileSet :: TileSet (int tileWidth, int tileHeight, std::string file) : tileSet(*(new GameObject()), file){
 

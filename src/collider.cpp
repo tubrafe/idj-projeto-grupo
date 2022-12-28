@@ -80,8 +80,6 @@ void Collider :: Update (float dt){
     box.x = (box.GetCenter().x + temp.x) - box.w/2;
     box.y = (box.GetCenter().y + temp.y) - box.h/2;
 
-    printf("%f colisor\n", box.y+box.h);
-
 }
 
 

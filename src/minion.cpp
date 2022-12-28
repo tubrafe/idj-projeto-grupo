@@ -1,3 +1,9 @@
+/*
+##############################
+Esse codigo n esta sendo usado
+##############################
+*/
+
 #include "../include/minion.h"
 #include "../include/bullet.h"
 #include "../include/sprite.h"

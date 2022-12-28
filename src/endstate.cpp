@@ -11,7 +11,7 @@ EndState :: EndState(){
     Camera::pos = Vec2(0,0);
     bool temp = GameData::playerVictory;
 
-
+    //caso o jogador venca
     if(temp == true){
 
         GameObject* bg = new GameObject();
@@ -33,6 +33,7 @@ EndState :: EndState(){
         backgroundMusic = new Music("./assets/audio/endStateWin.ogg");
 
     }
+    //caso o jogador perca
     else{
 
         GameObject* bg = new GameObject();
@@ -84,7 +85,7 @@ void EndState::Render(){
 void EndState :: Update(float dt){
 
 
-    
+    // espera resposta do jogador
 	
 	if((InputManager::GetInstance().KeyPress(SDLK_ESCAPE)) or (InputManager::GetInstance().QuitRequested())){
 		quitRequested = true;

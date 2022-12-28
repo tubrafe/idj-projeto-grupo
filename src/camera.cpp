@@ -9,6 +9,8 @@ GameObject* Camera :: focus;
 
 void Camera :: Follow (GameObject* newFocus){
 
+// redefine o centro da camera //
+
     focus = newFocus;
 
 
@@ -17,6 +19,7 @@ void Camera :: Follow (GameObject* newFocus){
 
 void Camera :: Unfollow(){
 
+// faz a camera parar de seguir um objeto //
 
     focus = nullptr;
 
@@ -29,6 +32,7 @@ void Camera :: Update (float dt){
     speed = {0,0};
 
     if(focus == nullptr){
+// parte n esta sendo usada //
 
         if(InputManager :: GetInstance().IsKeyDown(SDLK_UP)){
             speed = speed +  Vec2(0, -1);
@@ -51,6 +55,7 @@ void Camera :: Update (float dt){
         pos.y = pos.y + (speed.y*dt*200);
     }
     else{
+// deixa a camera com o centro o personagem //
 
         pos = {focus->box.GetCenter().x - 500, focus->box.GetCenter().y - 300};
 

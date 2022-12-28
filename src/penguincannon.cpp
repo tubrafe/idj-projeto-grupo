@@ -1,3 +1,9 @@
+/*
+##############################
+Esse codigo n esta sendo usado
+##############################
+*/
+
 #include "../include/penguincannon.h"
 #include "../include/sprite.h"
 #include "../include/state.h"

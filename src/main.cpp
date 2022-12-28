@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../include/game.h"
 
+// roda o jogo
 int main  (int   argc   , char**   arg){
 
 

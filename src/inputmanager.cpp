@@ -9,7 +9,7 @@
 #define ESCAPE_KEY        SDLK_ESCAPE
 #define LEFT_MOUSE_BUTTON SDL_BUTTON_LEFT
 
-
+// controle das respostas do jogador para identificar o que ele fez
 
 InputManager& InputManager :: GetInstance(){
 

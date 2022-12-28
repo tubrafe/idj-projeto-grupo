@@ -1,3 +1,8 @@
+/*
+n sei se esta sendo usado
+
+*/
+
 #include "../include/camerafollower.h"
 #include "../include/camera.h"
 

@@ -12,17 +12,17 @@
 Game* Game :: instance = nullptr;
 std::stack<std::unique_ptr<State>> Game::stateStack;
 
-
+// criacao do jogo
 Game& Game :: GetInstance () {
 
     if (instance == nullptr) {
-        new Game("Matheus Araujo Ferreira 180024892", 1024, 600);
+        new Game("Hibernus", 1024, 600);
     };
 
     return *instance;
 }
 
-
+//config iniciais para inicializacao do jogo
 Game :: Game (std :: string title, int width, int height){
 
     frameStart =  SDL_GetTicks();
@@ -62,7 +62,7 @@ Game :: Game (std :: string title, int width, int height){
 }
 
 
-
+// encerra o jogo
 Game :: ~Game () {
 
     if(storedState != nullptr){
@@ -91,7 +91,7 @@ Game :: ~Game () {
 
 
 
-
+// pega o estado no topo da pilha de estados
 State& Game :: GetCurrentState (){
 
     return *stateStack.top();
@@ -106,7 +106,7 @@ SDL_Renderer* Game :: GetRenderer () {
 
 }
 
-
+// coloca um novo estado na pilha de estados
 void Game :: Push(State* state){
 
     storedState = state;
@@ -116,6 +116,7 @@ void Game :: Push(State* state){
 
 void Game :: Run (){
 
+    // inicia o estado do topo da pilha, se n houver, termina a execucao
     if(storedState != nullptr){
         stateStack.emplace(storedState);
         storedState = nullptr;
@@ -125,8 +126,10 @@ void Game :: Run (){
         exit(0);
     }
 
+    // loop principal do jogo
     while((stateStack.top()->QuitRequested() == false) and (stateStack.empty() == false)){
 
+        //retira o estado do topo
         if(stateStack.top()->PopRequested() == true){
             stateStack.top()->Pause();
             stateStack.pop();
@@ -162,6 +165,7 @@ void Game :: Run (){
             SDL_Delay(33 - ms.count());
     };
 	
+    // limpa a pilha
     while(stateStack.empty() == false){
         stateStack.pop();
     }
@@ -172,6 +176,7 @@ void Game :: Run (){
 }
 
 
+// calcula o tempo entre updates
 void Game :: CalculateDeltaTime(){
 
     int temp = frameStart;
@@ -183,7 +188,7 @@ void Game :: CalculateDeltaTime(){
 }
 
 
-
+//retorna o tempo entre updates
 float Game :: GetDeltaTime(){
 
     return dt;

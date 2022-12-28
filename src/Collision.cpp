@@ -1,3 +1,8 @@
+/*
+classe pronta da materia
+
+*/
+
 #include "Rect.h"
 #include "Vec2.h"
 

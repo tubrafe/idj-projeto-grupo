@@ -4,7 +4,7 @@
 
 
 
-
+// roda as funcoes referentes a musica
 
 Music :: Music(){
 

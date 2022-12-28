@@ -1,6 +1,7 @@
 #include "../include/text.h"
 #include "../include/game.h"
 
+// controla textos criados no jogo (no momento apenas usado na tella inicial e final)
 
 Text :: Text (GameObject& associated, std::string fontFile, int fontSize, TextStyle style, std::string text, SDL_Color color, float tempo) : Component(associated){
 

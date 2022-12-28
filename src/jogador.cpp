@@ -15,7 +15,8 @@ Jogador* Jogador::player = nullptr;
 Jogador :: Jogador(GameObject& associated) : Component(associated){
 
 
-
+    Sprite* personagem = new Sprite(associated,"./assets/img/pers_parado1.png" );
+    associated.AddComponent(personagem);
     hp = 5;
     angle = 0;
     atrito = 1;
@@ -31,19 +32,33 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     numJumps = 1;
     pulosRestantes = numJumps;
 
+    // controla caso o jogador incoste em um inimigo e caso encoste o tempo de invunerabilidade dele
     encostar = new Timer();
     invuneravel = new Timer();
     contato = 0;
 
+    // estado do jogador, sendo andandod de andando para direita, e andandoe andando para a esquerda
     caindo = false;
     parado = false;
     agarrado = false;
+    andandod = false;
+    andandoe = false;
 
+    //controla o ponto de nascimento do jogador
     checkpoint.x = associated.box.x;
     checkpoint.y = associated.box.y;
 
+    // pega o tamanho do sprite atual do jogador
+    Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+    if(jog!= nullptr){
+        largura = jog->GetWidth();
+        altura = jog->GetHeight();       
+    }
 
 }
+
+
 
 Jogador :: ~Jogador(){
 
@@ -60,11 +75,13 @@ void Jogador :: Start(){}
 
 void Jogador :: Update (float dt){
 
-
+    //grava a posicao anterior do jogador para o calculo de impacto com o solo mostrado mais a frente
     posyh_anterior = associated.box.y + associated.box.h;
     posy_anterior = associated.box.y;
 
     int velocidade = 50;
+
+// isso eh usado para caso o jogador encoste em um inimigo, por isso n esta sendo usado no momento
 
 /*
     encostar->Update(dt);
@@ -91,6 +108,7 @@ void Jogador :: Update (float dt){
 
 */
 
+// se o jogador estiver caindo, calcula a velocidade da queda, dependendo se estiver agarrado a parede ou n
     if (caindo){
 
         if(agarrado){
@@ -114,11 +132,11 @@ void Jogador :: Update (float dt){
 
 
 
-
+    // posicao inicial do jogador antes da atualizacao de movimento
     Vec2 atual = Vec2(associated.box.x, associated.box.y);
 
 
-
+    // se o jogador apertar espaco ele pula se tiver pulo disponivel (caso como por exemplo ele ter double jump)
     if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (pulosRestantes > 0)){
 
         pulosRestantes = pulosRestantes - 1;
@@ -128,30 +146,36 @@ void Jogador :: Update (float dt){
 
     }
 
+    // pulo diferenciado para caso ele pule a partir de uma parede, sendo o valor 1 se ele estiver agarrado a uma parede pela
+    // direita dela, ou 2 se for pela esquerda
     if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (agarrado)){
 
         speed.y = velPulo;
         if(ladoGrudado == 1){
-            speed.x = 20;
+            speed.x = 10;
         }
         else if (ladoGrudado == 2){
-            speed.x = -20;
+            speed.x = -10;
         }
 
     }
 
+    // movimento para a direita
     if(InputManager :: GetInstance().IsKeyDown(SDLK_d)){
 
         parado = false;
-        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+        andandoe = false;
+        // seta o sprite dele andando para a direita apenas uma vez enquanto isso se repetir
+        if(andandod == false){
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
-        if(jog!= nullptr){
-            jog->setTexture("./assets/img/sonic.png");
-            jog->SetFrameCount(1);
-            jog->SetFrameTime(0);        
+            if(jog!= nullptr){
+                jog->setTexture("./assets/img/pers_andando1.png");
+                jog->SetFrameCount(5);
+                jog->SetFrameTime(0.2);      
+            }
         }
-
-
+        andandod = true;
         if(speed.x < velocidade){
             speed.x = speed.x + 1;
         }
@@ -160,17 +184,22 @@ void Jogador :: Update (float dt){
         }
 
     }
+    // movimento para a esquerda
     else if(InputManager :: GetInstance().IsKeyDown(SDLK_a)){
 
         parado = false;
-        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+        andandod = false;
+        // seta o sprite dele andando para a esquerda apenas uma vez enquanto isso se repetir
+        if(andandoe == false){
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
-        if(jog!= nullptr){
-            jog->setTexture("./assets/img/sonic2.png");
-            jog->SetFrameCount(1);
-            jog->SetFrameTime(0);
-        }        
-
+            if(jog!= nullptr){
+                jog->setTexture("./assets/img/pers_andando2.png");
+                jog->SetFrameCount(5);
+                jog->SetFrameTime(0.2); 
+            }        
+        }
+        andandoe = true;        
         if(speed.x > -velocidade){
             speed.x = speed.x - 1;
         }
@@ -179,6 +208,7 @@ void Jogador :: Update (float dt){
         }
 
     }
+    // caso ele pare de segurar alguma das teclas a e d, ele vai perdendo velocidade ate parar
     else{
         if(speed.x > 0){
             speed.x = speed.x - atrito;
@@ -193,7 +223,7 @@ void Jogador :: Update (float dt){
     }
 
 
-
+    // caso ele esteja parado, seta o sprite dele parado dependendo de qual direcao ele tava andando
     if((speed.x == 0) and (parado == false)){
 
         parado = true;
@@ -201,18 +231,32 @@ void Jogador :: Update (float dt){
 
         if(jog!= nullptr){
 
-            jog->setTexture("./assets/img/ss.png");
-            jog->SetFrameCount(4);
-            jog->SetFrameTime(0.4);
-
+            if(andandod == true){
+                jog->setTexture("./assets/img/pers_parado1.png");
+                jog->SetFrameCount(1);
+                jog->SetFrameTime(0);
+            }
+            if(andandoe == true){
+                jog->setTexture("./assets/img/pers_parado2.png");
+                jog->SetFrameCount(1);
+                jog->SetFrameTime(0);
+            }
 
         }
+        andandod = false;
+        andandoe = false;
+    }
 
+    // atualiza o tamanho da imagem do jogador caso tenha mudado
+    Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+    if(jog!= nullptr){
+        largura = jog->GetWidth();
+        altura = jog->GetHeight();       
     }
 
 
-
-
+    // atualiza a posicao do jogador
     Vec2 temp;
 
     temp.x = speed.x * dt * 10;
@@ -226,7 +270,7 @@ void Jogador :: Update (float dt){
     associated.box.y = atual.y;
 
 
-
+    // caso o jogador morra
     if(hp <=0 ){
 
         GameObject* morte = new GameObject();
@@ -258,6 +302,7 @@ void Jogador :: Update (float dt){
 
     }
 
+    //refaz essas variaveis para o calculo de impacto com o solo
     caindo = true;
     agarrado = false;
 
@@ -293,7 +338,8 @@ void Jogador :: NotifyCollision ( GameObject& other){
 
     Bloco *chao =  (Bloco*)other.GetComponent("Bloco");
 
-
+    // caso ele colida com um objeto de um tipo bloco, ele vai para essa funcao
+    // para decidir o que sera feito dependendo do tipo colidido
     if(chao != nullptr){
         movimentacaoTipoChao(chao);
     }
@@ -310,12 +356,21 @@ Rect Jogador :: GetPos(){
 }
 
 
-
+// funcao para decidir o que sera feito com colisoes do tipo bloco
 void Jogador :: movimentacaoTipoChao(Bloco *chao){
 
-
+    // caso colida com o chao comum
     if(chao->getTipo() == "terra"){
 
+        /*
+        calculo para teleportar o jogador para um dos 4 lados do retangulo no caso de colisao para dar a impreensao de que esta colidindo
+        os primeiros 4 ifs, verifica se 2 vertices consecutivos da box do jogador esta colidindo com o bloco, considerando que os vertices sao
+        x,y: vertice esquerdo superior/ x,y+h: vertice esquerdo inferior/ x+w,y: vertice direito superior/ x+w,y+h: vertice direito inferior
+        caso os dois vertices de cima estejam colidindo, eh o caso que a cabeca do personagem ta encostando o bloco, ou seja ele esta embaixo dele
+        caso os dois vertices de baixo estejam colidindo, eh o caso que os pes do personagem ta encostando o bloco, ou seja ele esta emcima dele
+        caso os dois vertices da direita estejam colidindo, eh o caso dele esta colidindo com a esquerda do bloco e
+        caso os dois vertices da esquerda estejam colidindo, eh o caso dele esta colidindo com a direita do bloco
+        */
 
         if((chao->Contains(Vec2(associated.box.x, associated.box.y)) and (chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y))))){
 
@@ -336,7 +391,7 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
         
         else if((chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y)) and (chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y + associated.box.h))))){
 
-            associated.box.x = chao->getX() - 48;
+            associated.box.x = chao->getX() - largura;
             agarrado = true;
             ladoGrudado = 2;
             speed.x = 0;
@@ -345,23 +400,28 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
 
         else if((chao->Contains(Vec2(associated.box.x, associated.box.y + associated.box.h)) and (chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y + associated.box.h))))){
 
-            associated.box.y = chao->getY() - 57;
+            associated.box.y = chao->getY() - altura;
             caindo = false;
             pulosRestantes = numJumps;
             speed.y = 0;
 
         }
 
-        
-
-
+        /*      
+        os proximos ifs, sao quando apenas um vertice esta encostando no bloco, ou seja nos cantos do retangulo do chao
+        para isso alem dos vertices eh necessario saber a posicao anterior antes da colisao do personagem, pois tera os seguintes casos
+        caso algum vertice de cima esta colidindo, deve ser necessario saber se o jogador sera teleportado para o lado ou para baixo, para isso
+        eh feito um calculo assim: se o y anterior dele esta mais baixo que o bloco, eh pq ele esta batendo com a cabeca logo ele eh teleportado
+        para baixo, caso ele fosse mais alto eh pq ele esta batendo nos lados do bloco, e com isso ele eh teleportado para a posicao certa, o mesmo vale
+        para os vertices de baixo
+        */
 
 
         else if((chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y + associated.box.h)))){
           
             if(speed.y < 0){
 
-                associated.box.x = chao->getX() - 48;
+                associated.box.x = chao->getX() - largura;
                 agarrado = true;
                 ladoGrudado = 2;
                 speed.x = 0;
@@ -371,14 +431,14 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
 
                 if(posyh_anterior > chao->getY()){
 
-                    associated.box.x = chao->getX() - 48;
+                    associated.box.x = chao->getX() - largura;
                     agarrado = true;
                     ladoGrudado = 2;
                     speed.x = 0;                    
                 
                 }
                 else{
-                    associated.box.y = chao->getY() - 57;
+                    associated.box.y = chao->getY() - altura;
                     caindo = false;
                     pulosRestantes = numJumps;
                     speed.y = 0;
@@ -408,7 +468,7 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 
                 }
                 else{
-                    associated.box.y = chao->getY() - 57;
+                    associated.box.y = chao->getY() - altura;
                     pulosRestantes = numJumps;
                     caindo = false;
                     speed.y = 0;
@@ -451,7 +511,7 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             
             if(speed.y >0){
             
-                associated.box.x = chao->getX() -48;
+                associated.box.x = chao->getX() -largura;
                 agarrado = true;
                 ladoGrudado = 2;
                 speed.x = 0;
@@ -460,7 +520,7 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             else{
                 if(posy_anterior < chao->getY() + chao->getHigh()){
 
-                    associated.box.x = chao->getX() -48;
+                    associated.box.x = chao->getX() -largura;
                     agarrado = true;
                     ladoGrudado = 2;
                     speed.x = 0;             
@@ -475,12 +535,25 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
         }
     }
 
-
+    // caso seja um tipo de bloco de perigo o personagem perde uma vida
+    // e volta ao checkpoint
     if(chao->getTipo() == "lava"){
 
         hp = hp - 1;
         associated.box.x = checkpoint.x;
         associated.box.y = checkpoint.y;
+        speed.x = 0;
+        speed.y = 0;
 
     }
+    // caso seja de um tipo checkpoint e o jogador apertar x
+    // o checkpoint do jogador eh atualizado para a posicao do bloco
+      if(chao->getTipo() == "checkpoint"){
+
+        if(InputManager :: GetInstance().KeyPress(SDLK_x)){
+            checkpoint.x = chao->getX();
+            checkpoint.y = chao->getY();
+        }
+
+    }  
 }

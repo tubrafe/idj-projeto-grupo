@@ -13,7 +13,7 @@
 #include <cmath>
 
 
-
+// loop do jogo principal
 
 StageState :: StageState () {
 
@@ -52,7 +52,7 @@ void StageState :: LoadAssets() {
 	objectArray.emplace_back(objeto);
 
 
-
+// n esta sendo usado tilemap no momento
 /*	GameObject *outro = new GameObject();
 
 	TileSet *tile = new TileSet(64,64,"./assets/img/tileset.png");
@@ -86,18 +86,30 @@ void StageState :: LoadAssets() {
 	objectArray.emplace_back(lava);
 
 
+
+	GameObject* checkpoint = new GameObject();
+
+	Bloco* fogueira = new Bloco(*checkpoint,"./assets/img/camp_aceso.png",900,640, "checkpoint", Vec2(1,1));
+
+	checkpoint->AddComponent(fogueira);
+	objectArray.emplace_back(checkpoint);
+
+
+
+
+
 	GameObject* player = new GameObject();
 
 	player->box.x = 750;
-	player->box.y = 600;
+	player->box.y = 630;
 
 	Jogador* jogador = new Jogador(*player);
 
-    Sprite* personagem = new Sprite(*player,"./assets/img/sonic.png" );
+
 
     Collider* colisor = new Collider(*player);
 
-    player->AddComponent(personagem);	
+	
 	player->AddComponent(jogador);
     player->AddComponent(colisor);
 	
@@ -107,7 +119,7 @@ void StageState :: LoadAssets() {
 
 
 
-
+// n usado pq n ha aliens atualmente
 /*
 	int i;
 
@@ -142,7 +154,7 @@ void StageState :: LoadAssets() {
 	}
 
 */
-    backgroundMusic = new Music("./assets/audio/sonicphase.mp3");
+    backgroundMusic = new Music("./assets/audio/TRY.mp3");
 
 }
 

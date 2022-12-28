@@ -1,3 +1,6 @@
+//Classe para criar diversos tipos de blocos//
+
+
 #ifndef BLOCO_H
 #define BLOCO_H
 

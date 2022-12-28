@@ -52,6 +52,8 @@ class Jogador : public Component{
 
         bool caindo;
         bool parado;
+        bool andandod;
+        bool andandoe;
         bool agarrado;
         int ladoGrudado;
 
@@ -62,6 +64,9 @@ class Jogador : public Component{
         float posy_anterior;
 
         Vec2 checkpoint;
+
+        float altura;
+        float largura;
 
 };
 

@@ -7,6 +7,9 @@ std::unordered_map<std::string, std::shared_ptr<Mix_Music>> Resources :: musicTa
 std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> Resources :: imageTable;
 std::unordered_map<std::string, std::shared_ptr<TTF_Font>> Resources :: fontTable;
 
+// faz o controle das imagens, textos, musica e sons do jogo para que sejam declarados apenas uma vez
+// e n cause lixo de memoria
+
 std::shared_ptr<SDL_Texture> Resources :: GetImage(std::string file ){
 
     if(imageTable.find(file) != imageTable.end() ){

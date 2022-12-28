@@ -5,7 +5,7 @@
 #include <string>
 
 
-
+// controla as funcoes referentes aos sprites do jogo
 
 
 Sprite :: Sprite(GameObject& associated) : Component(associated){
@@ -157,6 +157,7 @@ void Sprite :: Update(float dt){
         }
     }
 
+    // serve para ficar piscando uma imagem, mas n esta sendo usado no momento
     if(piscar != 0){
         if(texture == nullptr){
             texture = temporario;
@@ -230,20 +231,21 @@ void Sprite :: SetFrameTime (float frameTime){
 
 }
 
-
+// seta caso se queira que a imagem fique piscando
 void Sprite :: setPiscar(){
 
     piscar = 1;
 
 }
 
+// volta a imagem caso ela tenha parado no pisque e tenha desaparecido
 void Sprite :: setOriginal(){
 
     texture = temporario;
 
 }
 
-
+// funcao que criei para mudar a imagem de um mesmo objeto
 void Sprite :: setTexture(std::string textura){
 
     this->Open(textura);

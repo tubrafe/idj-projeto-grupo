@@ -1,5 +1,6 @@
 #include "../include/rect.h"
 
+// funcoes referentes as diversas boxes usadas no jogo
 
 Rect :: Rect() {};
 Rect :: Rect(float d, float f, float j, float l){
@@ -11,6 +12,7 @@ Rect :: Rect(float d, float f, float j, float l){
 
 };
 
+// ve se o vetor passado esta na box
 bool Rect :: Contains(Vec2 vetor){
 
     int xmax = this->x + w;
@@ -27,7 +29,7 @@ bool Rect :: Contains(Vec2 vetor){
 }
 
 
-
+// retorna o centro do retangulo
 Vec2 Rect :: GetCenter(){
 
     float xtemp = this->x + this->w/2;

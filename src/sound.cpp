@@ -4,7 +4,7 @@
 
 
 
-
+// controla as funcoes referentes aos sons do jogo
 
 
 

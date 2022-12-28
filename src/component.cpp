@@ -1,3 +1,5 @@
+/*base para todo game object*/
+
 #include "../include/component.h"
 #include "../include/gameobject.h"
 

@@ -1,7 +1,7 @@
 #include "../include/vec2.h"
 #include <cmath>
 
-
+// controla funcoes referentes a vetores usados no jogo
 
 
 Vec2 :: Vec2(){};

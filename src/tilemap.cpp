@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 
+// cria um tilemap n esta sendo usado no momento
 
 TileMap :: TileMap(GameObject& associated, std::string file , TileSet* tileSet): Component(associated){
 

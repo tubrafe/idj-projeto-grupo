@@ -1,7 +1,7 @@
 #include "../include/gameobject.h"
 #include "../include/component.h"
 
-
+//todas as funcoes referentes aos gameobjects
 
 GameObject :: GameObject(){
 
@@ -81,7 +81,6 @@ void GameObject :: RequestDelete(){
 void GameObject :: AddComponent(Component* cpt){
 
 
-    // cpt->Start();
     components.emplace_back(cpt);
 
 

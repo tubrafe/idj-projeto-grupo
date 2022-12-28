@@ -1,6 +1,8 @@
 #include "../include/bloco.h"
 #include "../include/state.h"
 #include "../include/game.h"
+#include "../include/jogador.h"
+#include "../include/inputmanager.h"
 
 
 
@@ -10,10 +12,14 @@ Bloco :: Bloco(GameObject& associated,  std :: string file, float posx, float po
     associated.box.x = posx;
     associated.box.y = posy;
 
+// pega a imagem, podendo aumenta-la ou diminuia-la//
+
     Sprite* imagem = new Sprite(associated, file);
     imagem->SetScaleX(escala.x, escala.y);
 
     associated.AddComponent(imagem);
+
+// ajusta a box de colisao para o tamanho determinado pela imagem//
 
     Collider* colisor = new Collider(associated);
 
@@ -26,7 +32,7 @@ Bloco :: Bloco(GameObject& associated,  std :: string file, float posx, float po
 
     this->colisor = colisor;
 
-
+// identifica do que sera feito o bloco//
     this->tipo = tipo;
 
 
@@ -60,7 +66,31 @@ bool Bloco :: Is(std::string type){
    
    
    
-void Bloco :: NotifyCollision ( GameObject& other){}
+void Bloco :: NotifyCollision ( GameObject& other){
+
+    Jogador *player =  (Jogador*)other.GetComponent("Jogador");
+
+// se o bloco for do tipo 'checkpoint', se o jogador apertar x ele muda o sprite //
+
+    if(player != nullptr){
+
+        if(this->tipo == "checkpoint"){
+
+            if(InputManager :: GetInstance().KeyPress(SDLK_x)){
+
+                Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+                if(jog!= nullptr){
+                        jog->setTexture("./assets/img/camp_salvo.png");
+                }
+
+            }
+
+        }
+
+    }
+
+}
 
 
 
@@ -110,6 +140,7 @@ Vec2 Bloco :: getcenter(){
 
 bool Bloco::Contains(Vec2 vetor){
 
+// ve se o vetor passado esta dentro do bloco //
 
     return colisor->box.Contains(vetor);
 
@@ -120,6 +151,8 @@ bool Bloco::Contains(Vec2 vetor){
 
 
 std::string Bloco:: getTipo(){
+
+// retorna o tipo do bloco //
 
     return tipo;
 

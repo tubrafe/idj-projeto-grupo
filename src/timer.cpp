@@ -1,7 +1,7 @@
 #include "../include/timer.h"
 
 
-
+// funcoes para relogio
 
 Timer :: Timer(){
 

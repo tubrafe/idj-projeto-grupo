@@ -1,6 +1,6 @@
 #include "../include/state.h"
 
-
+// padrao de todos os modulos do tipo state
 
 State :: State(){
 
