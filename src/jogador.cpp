@@ -8,6 +8,7 @@
 #include "../include/camera.h"
 #include "../include/alien.h"
 #include "../include/minion.h"
+#include "../include/gamedata.h"
 
 
 Jogador* Jogador::player = nullptr;
@@ -44,9 +45,6 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     andandod = false;
     andandoe = false;
 
-    //controla o ponto de nascimento do jogador
-    checkpoint.x = associated.box.x;
-    checkpoint.y = associated.box.y;
 
     // pega o tamanho do sprite atual do jogador
     Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
@@ -540,8 +538,8 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
     if(chao->getTipo() == "lava"){
 
         hp = hp - 1;
-        associated.box.x = checkpoint.x;
-        associated.box.y = checkpoint.y;
+        associated.box.x = GameData::checkPointX;
+        associated.box.y = GameData::checkPointY;
         speed.x = 0;
         speed.y = 0;
 
@@ -551,8 +549,8 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
       if(chao->getTipo() == "checkpoint"){
 
         if(InputManager :: GetInstance().KeyPress(SDLK_x)){
-            checkpoint.x = chao->getX();
-            checkpoint.y = chao->getY();
+            GameData::checkPointX = chao->getX();
+            GameData::checkPointY = chao->getY();
         }
 
     }  

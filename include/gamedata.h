@@ -8,6 +8,8 @@
 class GameData {
     public:
         static bool playerVictory;
+        static float checkPointX;
+        static float checkPointY;
 };
 
 #endif

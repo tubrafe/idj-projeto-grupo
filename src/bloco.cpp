@@ -3,6 +3,7 @@
 #include "../include/game.h"
 #include "../include/jogador.h"
 #include "../include/inputmanager.h"
+#include "../include/gamedata.h"
 
 
 
@@ -44,11 +45,38 @@ Bloco :: Bloco(GameObject& associated,  std :: string file, float posx, float po
 Bloco :: ~Bloco(){}
 
 
-void Bloco :: Start(){}
+void Bloco :: Start(){
+
+// inicia o checkpoint com a imagem de checkpoint atual
+    if(this->tipo == "checkpoint"){
+        if(this->associated.box.x == GameData::checkPointX){
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+            if(jog!= nullptr){
+                jog->setTexture("./assets/img/camp_salvo.png");
+            }
+
+        }
+    }
+}
 
 
 
-void Bloco :: Update(float dt){}
+void Bloco :: Update(float dt){
+
+// transforma todos os checkpoints n ativos atualmente com a imagem de nao ativo
+    if(this->tipo == "checkpoint"){
+        if(this->associated.box.x != GameData::checkPointX){
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+            if(jog!= nullptr){
+                jog->setTexture("./assets/img/camp_aceso.png");
+            }
+
+        }
+    }
+
+}
 
 
 

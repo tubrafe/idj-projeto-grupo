@@ -307,7 +307,12 @@ dep/stagestate.d bin/stagestate.o: src/stagestate.cpp \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h \
  src/../include/state.h src/../include/titlestate.h \
  src/../include/bloco.h src/../include/sprite.h src/../include/collider.h \
- src/../include/jogador.h src/../include/bloco.h
+ src/../include/jogador.h src/../include/bloco.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/fstream \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++io.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/fstream.tcc
 src/../include/stagestate.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -645,3 +650,8 @@ src/../include/sprite.h:
 src/../include/collider.h:
 src/../include/jogador.h:
 src/../include/bloco.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/fstream:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++io.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/fstream.tcc:

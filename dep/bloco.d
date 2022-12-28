@@ -291,7 +291,8 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
+ src/../include/gamedata.h
 src/../include/bloco.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -611,3 +612,4 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h:
+src/../include/gamedata.h:

@@ -11,7 +11,9 @@
 #include "../include/bloco.h"
 #include "../include/jogador.h"
 #include <cmath>
+#include <fstream>
 
+using namespace std;
 
 // loop do jogo principal
 
@@ -24,8 +26,17 @@ StageState :: StageState () {
     quitRequested = false;
 
 	GameData::playerVictory = false;
-    
 
+	std::ifstream save ("./assets/save/save.txt"); 
+	std::string linha;
+
+	std::getline(save, linha);
+	GameData::checkPointX = std::stof(linha);
+    
+	std::getline(save, linha);
+	GameData::checkPointY = std::stof(linha);
+
+	printf("%f %f\n", GameData::checkPointX, GameData::checkPointY);
 }
 
 StageState :: ~StageState(){
@@ -95,13 +106,19 @@ void StageState :: LoadAssets() {
 	objectArray.emplace_back(checkpoint);
 
 
+	GameObject* checkpoint2 = new GameObject();
+
+	Bloco* fogueira2 = new Bloco(*checkpoint2,"./assets/img/camp_aceso.png",2500,640, "checkpoint", Vec2(1,1));
+
+	checkpoint2->AddComponent(fogueira2);
+	objectArray.emplace_back(checkpoint2);
 
 
 
 	GameObject* player = new GameObject();
 
-	player->box.x = 750;
-	player->box.y = 630;
+	player->box.x = GameData::checkPointX;
+	player->box.y = GameData::checkPointY;
 
 	Jogador* jogador = new Jogador(*player);
 
@@ -176,6 +193,15 @@ void StageState :: Update (float dt) {
 	else{
 		if((InputManager :: GetInstance().KeyPress(SDLK_ESCAPE) == true) or (InputManager :: GetInstance().QuitRequested() == true)){
 
+
+			std::ofstream save ("./assets/save/save.txt"); 
+			std::string salvar = std::to_string(GameData::checkPointX);
+			salvar.append("\n");
+			salvar.append(std::to_string(GameData::checkPointY));
+
+
+			save << salvar << endl;
+			save.close();
 			popRequested = true;
 			backgroundMusic->Stop();
 			Camera::Unfollow();

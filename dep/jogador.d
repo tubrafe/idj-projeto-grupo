@@ -295,7 +295,7 @@ dep/jogador.d bin/jogador.o: src/jogador.cpp src/../include/jogador.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
  src/../include/collider.h src/../include/bullet.h \
  src/../include/camera.h src/../include/gameobject.h \
- src/../include/alien.h src/../include/minion.h
+ src/../include/alien.h src/../include/minion.h src/../include/gamedata.h
 src/../include/jogador.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -621,3 +621,4 @@ src/../include/camera.h:
 src/../include/gameobject.h:
 src/../include/alien.h:
 src/../include/minion.h:
+src/../include/gamedata.h:
