@@ -28,6 +28,8 @@ class Jogador : public Component{
         bool Is (std::string type);
         void Start();
 
+        void Attack();
+
         static Jogador* player;
 
         void NotifyCollision ( GameObject& other);
@@ -42,14 +44,18 @@ class Jogador : public Component{
         float angle;
         int hp;
 
+        float cooldown;
         int gravidade;
         int gravidadeMax;
         int velPulo;
 
         Timer* encostar;
+        Timer* timer;
         Timer* invuneravel;
         int contato;
 
+        bool atacando;
+        bool pulando;
         bool caindo;
         bool parado;
         bool andandod;
