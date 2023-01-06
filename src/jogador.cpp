@@ -16,11 +16,14 @@ Jogador* Jogador::player = nullptr;
 Jogador :: Jogador(GameObject& associated) : Component(associated){
 
 
-    Sprite* personagem = new Sprite(associated,"./assets/img/pers_parado1.png" );
+    Sprite* personagem = new Sprite(associated,"./assets/img/Idle.png");
+    personagem->SetFrameCount(10);
+    personagem->SetFrameTime(0.2);   
     associated.AddComponent(personagem);
     hp = 5;
     angle = 0;
     atrito = 1;
+    cooldown = 0.4;
     speed = Vec2(0,0);
 
     player = this;
@@ -38,13 +41,16 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     invuneravel = new Timer();
     contato = 0;
 
+    timer = new Timer();
+
     // estado do jogador, sendo andandod de andando para direita, e andandoe andando para a esquerda
     caindo = false;
     parado = false;
+    pulando = false;
     agarrado = false;
     andandod = false;
     andandoe = false;
-
+    atacando = false;
 
     // pega o tamanho do sprite atual do jogador
     Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
@@ -71,12 +77,17 @@ void Jogador :: Start(){}
 
 
 
+void Jogador :: Attack(){
+    
+
+
+}
 void Jogador :: Update (float dt){
 
     //grava a posicao anterior do jogador para o calculo de impacto com o solo mostrado mais a frente
     posyh_anterior = associated.box.y + associated.box.h;
     posy_anterior = associated.box.y;
-
+    angle = 0;
     int velocidade = 50;
 
 // isso eh usado para caso o jogador encoste em um inimigo, por isso n esta sendo usado no momento
@@ -137,6 +148,18 @@ void Jogador :: Update (float dt){
     // se o jogador apertar espaco ele pula se tiver pulo disponivel (caso como por exemplo ele ter double jump)
     if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (pulosRestantes > 0)){
 
+
+        if(pulando == false){
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+        
+            if(jog!= nullptr){
+                jog->setTexture("./assets/img/Jump.png");
+                jog->SetFrameCount(3);
+                jog->SetFrameTime(0.2);      
+            }
+        }
+        pulando = true;
         pulosRestantes = pulosRestantes - 1;
 
 
@@ -158,6 +181,60 @@ void Jogador :: Update (float dt){
 
     }
 
+
+    //ATAQUE
+    timer->Update(dt);
+    if(InputManager :: GetInstance().IsKeyDown(SDLK_r)){
+    
+            
+            
+            if(atacando == false){
+
+                Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+                
+                if(jog!= nullptr){
+                        jog->setTexture("./assets/img/Attack1.png");
+                        jog->SetFrameCount(7);
+                        jog->SetFrameTime(0.05);      
+                }
+
+
+            //COLOCAR UM DELAY DE 0.35
+
+
+                Vec2 inicio = Vec2((associated.box.x + associated.box.w/2), (associated.box.y + associated.box.h/2));
+                Vec2 fim = Vec2(jog->GetWidth()/2,0);
+                
+                Vec2 ponto = fim+inicio;
+
+
+                GameObject* objeto = new GameObject();
+
+                objeto->box.x = ponto.x;
+                objeto->box.y = ponto.y;
+
+                objeto->angleDeg = angle*180/M_PI;
+
+
+                
+                Bullet *bala = new Bullet(*objeto,angle,500,5,100,"./assets/img/minionbullet2.png",3,1, false);
+
+                objeto->AddComponent(bala);
+
+
+                State& estado = Game::GetInstance().GetCurrentState();
+                estado.AddObject(objeto); 
+
+                timer->Restart();
+
+
+        }
+        atacando = true;
+
+    }
+        if(timer->Get() > cooldown){
+            atacando = false;
+        }
     // movimento para a direita
     if(InputManager :: GetInstance().IsKeyDown(SDLK_d)){
 
@@ -168,8 +245,8 @@ void Jogador :: Update (float dt){
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
             if(jog!= nullptr){
-                jog->setTexture("./assets/img/pers_andando1.png");
-                jog->SetFrameCount(5);
+                jog->setTexture("./assets/img/Run.png");
+                jog->SetFrameCount(8);
                 jog->SetFrameTime(0.2);      
             }
         }
@@ -192,14 +269,14 @@ void Jogador :: Update (float dt){
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
             if(jog!= nullptr){
-                jog->setTexture("./assets/img/pers_andando2.png");
-                jog->SetFrameCount(5);
+                jog->setTexture("./assets/img/Run.png");
+                jog->SetFrameCount(8);
                 jog->SetFrameTime(0.2); 
             }        
         }
         andandoe = true;        
         if(speed.x > -velocidade){
-            speed.x = speed.x - 1;
+            speed.x = speed.x - 2;
         }
         else{
             speed.x = -velocidade;
@@ -221,6 +298,21 @@ void Jogador :: Update (float dt){
     }
 
 
+    //volta pra posição de parado
+    if(atacando == false){
+
+        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+        if(jog!= nullptr){
+
+            if(andandod == true){
+                jog->setTexture("./assets/img/Idle.png");
+                jog->SetFrameCount(10);
+                jog->SetFrameTime(0.2);
+            }
+    }
+
+    }
     // caso ele esteja parado, seta o sprite dele parado dependendo de qual direcao ele tava andando
     if((speed.x == 0) and (parado == false)){
 
@@ -230,19 +322,37 @@ void Jogador :: Update (float dt){
         if(jog!= nullptr){
 
             if(andandod == true){
-                jog->setTexture("./assets/img/pers_parado1.png");
-                jog->SetFrameCount(1);
-                jog->SetFrameTime(0);
+                jog->setTexture("./assets/img/Idle.png");
+                jog->SetFrameCount(10);
+                jog->SetFrameTime(0.2);
             }
             if(andandoe == true){
-                jog->setTexture("./assets/img/pers_parado2.png");
-                jog->SetFrameCount(1);
-                jog->SetFrameTime(0);
+                jog->setTexture("./assets/img/Idle.png");
+                jog->SetFrameCount(10);
+                jog->SetFrameTime(0.2);
             }
 
         }
         andandod = false;
         andandoe = false;
+    }
+
+
+    if(speed.y == 0){
+
+        parado = true;
+        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+        if(jog!= nullptr){
+
+            if(pulando == true){
+                jog->setTexture("./assets/img/Idle.png");
+                jog->SetFrameCount(10);
+                jog->SetFrameTime(0.2);
+            }
+
+        }
+        pulando = false;
     }
 
     // atualiza o tamanho da imagem do jogador caso tenha mudado
