@@ -11,6 +11,7 @@
 #include "../include/sound.h"
 #include "../include/vec2.h"
 #include "../include/tilemap.h"
+#include "../include/text.h"
 #include <string>
 #include <array>
 #include <memory>
@@ -35,6 +36,8 @@ class StageState : public State {
     private:
         TileSet* tileSet;
         Music* backgroundMusic;
+        Text* hp;
+        Text* stamina;
 
 
 

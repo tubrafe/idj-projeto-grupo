@@ -13,18 +13,23 @@
 
 Jogador* Jogador::player = nullptr;
 
+//vida e stamina passao a ser variaveis globais de todos os modulos ao inves de apenas o jogador
 Jogador :: Jogador(GameObject& associated) : Component(associated){
 
 
     Sprite* personagem = new Sprite(associated,"./assets/img/pers_parado1.png" );
     associated.AddComponent(personagem);
-    hp = 5;
+    if(GameData::hp_atual <= 0){
+        GameData::hp_atual = GameData::hp_total;
+    }
     angle = 0;
     atrito = 1;
     speed = Vec2(0,0);
 
     player = this;
 
+
+    cd_stamina = new Timer();
     
     gravidade = 2;
     gravidadeMax = 80;
@@ -45,6 +50,9 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     andandod = false;
     andandoe = false;
 
+    // serve para o controle das animacoes quando ocorre um pulo
+    anima_caindo = false;
+    speed_anterior = 1;
 
     // pega o tamanho do sprite atual do jogador
     Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
@@ -79,6 +87,30 @@ void Jogador :: Update (float dt){
 
     int velocidade = 50;
 
+// controle da stamina que o jogador possui no momento
+    cd_stamina->Update(dt);
+
+    if(cd_stamina->Get() > 0.5){
+
+        cd_stamina->Restart();
+
+        if(agarrado){
+            GameData::stamina_atual = GameData::stamina_atual - 1;
+
+            if(GameData::stamina_atual  < 0){
+                GameData::stamina_atual  = 0;
+            }
+
+        }
+        else{
+            GameData::stamina_atual  = GameData::stamina_atual  + 0.5;
+            if(GameData::stamina_atual  > GameData::stamina_total){
+                GameData::stamina_atual  = GameData::stamina_total ;
+            }
+        }
+
+    }
+
 // isso eh usado para caso o jogador encoste em um inimigo, por isso n esta sendo usado no momento
 
 /*
@@ -109,7 +141,7 @@ void Jogador :: Update (float dt){
 // se o jogador estiver caindo, calcula a velocidade da queda, dependendo se estiver agarrado a parede ou n
     if (caindo){
 
-        if(agarrado){
+        if((agarrado) and (GameData::stamina_atual > 0)){
            if(speed.y < 1){
                 speed.y = speed.y + 1;
             }
@@ -128,25 +160,105 @@ void Jogador :: Update (float dt){
         }
     }
 
+    // serve para colocar a animacao do personagem caindo
+    if((caindo)){
 
+        if(speed.y >= 0){
+
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+            if(anima_caindo == false){
+                if(jog!= nullptr){
+                    jog->setTexture("./assets/img/parado_ar.png");
+                    jog->SetFrameCount(2);
+                    jog->SetFrameTime(0.2); 
+                } 
+                anima_caindo = true;
+            }
+            parado = false;
+            andandod = false;
+            andandoe = false;
+    
+        }
+
+
+
+        }
+
+    // caso ele esteja parado, seta o sprite dele parado dependendo de qual direcao ele tava andando
+    if((speed.x == 0) and (parado == false)){
+
+        parado = true;
+        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+        if(jog!= nullptr){
+
+            if(andandod == true){
+                jog->setTexture("./assets/img/pers_parado1.png");
+                jog->SetFrameCount(1);
+                jog->SetFrameTime(0);
+                andandod = false;
+                andandoe = false;
+                anima_caindo = false;
+            }
+            else if(andandoe == true){
+                jog->setTexture("./assets/img/pers_parado2.png");
+                jog->SetFrameCount(1);
+                jog->SetFrameTime(0);
+                andandod = false;
+                andandoe = false;
+                anima_caindo = false;
+            }
+
+            // esses dois casos servem para quando o jogador pular e parar de se movimentar, para que o sprite esteja correto dele parado
+            else if((speed_anterior == 1) and (!caindo)){
+                jog->setTexture("./assets/img/pers_parado1.png");
+                jog->SetFrameCount(1);
+                jog->SetFrameTime(0);
+                andandod = false;
+                andandoe = false;
+                anima_caindo = false;
+            }
+            else if((speed_anterior == -1) and (!caindo)){
+                jog->setTexture("./assets/img/pers_parado2.png");
+                jog->SetFrameCount(1);
+                jog->SetFrameTime(0);
+                andandod = false;
+                andandoe = false;
+                anima_caindo = false;
+            }
+        }
+
+    }
 
     // posicao inicial do jogador antes da atualizacao de movimento
     Vec2 atual = Vec2(associated.box.x, associated.box.y);
 
 
     // se o jogador apertar espaco ele pula se tiver pulo disponivel (caso como por exemplo ele ter double jump)
+    // alem de colocar a animacao do pulo
     if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (pulosRestantes > 0)){
 
         pulosRestantes = pulosRestantes - 1;
+        pulando = true;
+        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
-
+            if(jog!= nullptr){
+                jog->setTexture("./assets/img/subida.png");
+                jog->SetFrameCount(5);
+                jog->SetFrameTime(0.2); 
+            }        
+        
+        parado = false;
+        andandod = false;
+        andandoe = false;
+        anima_caindo = false;
         speed.y = velPulo;
 
     }
 
     // pulo diferenciado para caso ele pule a partir de uma parede, sendo o valor 1 se ele estiver agarrado a uma parede pela
     // direita dela, ou 2 se for pela esquerda
-    if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (agarrado)){
+    if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (agarrado) and (GameData::stamina_atual>0)){
 
         speed.y = velPulo;
         if(ladoGrudado == 1){
@@ -161,10 +273,10 @@ void Jogador :: Update (float dt){
     // movimento para a direita
     if(InputManager :: GetInstance().IsKeyDown(SDLK_d)){
 
-        parado = false;
-        andandoe = false;
+
         // seta o sprite dele andando para a direita apenas uma vez enquanto isso se repetir
-        if(andandod == false){
+        if((andandod == false) and (caindo == false) and (pulando == false)){
+            
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
             if(jog!= nullptr){
@@ -172,8 +284,12 @@ void Jogador :: Update (float dt){
                 jog->SetFrameCount(5);
                 jog->SetFrameTime(0.2);      
             }
+            andandod = true;
+            anima_caindo = false;
+            parado = false;
+            andandoe = false;
         }
-        andandod = true;
+
         if(speed.x < velocidade){
             speed.x = speed.x + 1;
         }
@@ -184,11 +300,10 @@ void Jogador :: Update (float dt){
     }
     // movimento para a esquerda
     else if(InputManager :: GetInstance().IsKeyDown(SDLK_a)){
+        
 
-        parado = false;
-        andandod = false;
         // seta o sprite dele andando para a esquerda apenas uma vez enquanto isso se repetir
-        if(andandoe == false){
+        if((andandoe == false) and (caindo == false) and (pulando == false)){
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
             if(jog!= nullptr){
@@ -196,8 +311,12 @@ void Jogador :: Update (float dt){
                 jog->SetFrameCount(5);
                 jog->SetFrameTime(0.2); 
             }        
+            andandoe = true;   
+            anima_caindo = false;
+            parado = false;
+            andandod = false;     
         }
-        andandoe = true;        
+
         if(speed.x > -velocidade){
             speed.x = speed.x - 1;
         }
@@ -207,12 +326,44 @@ void Jogador :: Update (float dt){
 
     }
     // caso ele pare de segurar alguma das teclas a e d, ele vai perdendo velocidade ate parar
+    // adicionado dois casos, para q caso o personagem caia mas continue em movimento sem o jogador precionar alguma tecla
+    // para que a animacao mude para o personagem andando
     else{
         if(speed.x > 0){
             speed.x = speed.x - atrito;
+            speed_anterior = 1;
+
+            if((!caindo) and (!andandod)){
+                Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+                if(jog!= nullptr){
+                    jog->setTexture("./assets/img/pers_andando1.png");
+                    jog->SetFrameCount(5);
+                    jog->SetFrameTime(0.2);      
+                }
+                andandod = true;
+                anima_caindo = false;
+                parado = false;
+                andandoe = false;
+            }
         }
         else if (speed.x < 0){
             speed.x = speed.x + atrito;
+            speed_anterior = -1;
+
+            if((!caindo) and (!andandoe)){
+                Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+                if(jog!= nullptr){
+                    jog->setTexture("./assets/img/pers_andando2.png");
+                    jog->SetFrameCount(5);
+                    jog->SetFrameTime(0.2); 
+                }        
+                andandoe = true;   
+                anima_caindo = false;
+                parado = false;
+                andandod = false;     
+            }
         }
         else{
             speed.x = 0;
@@ -221,29 +372,7 @@ void Jogador :: Update (float dt){
     }
 
 
-    // caso ele esteja parado, seta o sprite dele parado dependendo de qual direcao ele tava andando
-    if((speed.x == 0) and (parado == false)){
 
-        parado = true;
-        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
-
-        if(jog!= nullptr){
-
-            if(andandod == true){
-                jog->setTexture("./assets/img/pers_parado1.png");
-                jog->SetFrameCount(1);
-                jog->SetFrameTime(0);
-            }
-            if(andandoe == true){
-                jog->setTexture("./assets/img/pers_parado2.png");
-                jog->SetFrameCount(1);
-                jog->SetFrameTime(0);
-            }
-
-        }
-        andandod = false;
-        andandoe = false;
-    }
 
     // atualiza o tamanho da imagem do jogador caso tenha mudado
     Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
@@ -269,7 +398,7 @@ void Jogador :: Update (float dt){
 
 
     // caso o jogador morra
-    if(hp <=0 ){
+    if(GameData::hp_atual <=0 ){
 
         GameObject* morte = new GameObject();
 
@@ -303,6 +432,8 @@ void Jogador :: Update (float dt){
     //refaz essas variaveis para o calculo de impacto com o solo
     caindo = true;
     agarrado = false;
+    pulando = false;
+    parado = false;
 
 }
 
@@ -355,6 +486,7 @@ Rect Jogador :: GetPos(){
 
 
 // funcao para decidir o que sera feito com colisoes do tipo bloco
+// variavel ultimo contato adicionada para o jogador ao cair voltar ao ultimo lugar que pisou
 void Jogador :: movimentacaoTipoChao(Bloco *chao){
 
     // caso colida com o chao comum
@@ -400,6 +532,16 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
 
             associated.box.y = chao->getY() - altura;
             caindo = false;
+            ultimoContatoX = associated.box.x;
+
+            if(ultimoContatoX < chao->getX()){
+                ultimoContatoX = chao->getX();
+            }                    
+            else if(ultimoContatoX > chao->getX() + chao->getLength() - largura){
+                ultimoContatoX = chao->getX() + chao->getLength() - largura;
+            }
+
+            ultimoContatoY = associated.box.y;
             pulosRestantes = numJumps;
             speed.y = 0;
 
@@ -438,6 +580,16 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 else{
                     associated.box.y = chao->getY() - altura;
                     caindo = false;
+                    ultimoContatoX = associated.box.x;
+
+                    if(ultimoContatoX < chao->getX()){
+                        ultimoContatoX = chao->getX();
+                    }                    
+                    else if(ultimoContatoX > chao->getX() + chao->getLength() - largura){
+                        ultimoContatoX = chao->getX() + chao->getLength() - largura;
+                    }
+
+                    ultimoContatoY = associated.box.y;
                     pulosRestantes = numJumps;
                     speed.y = 0;
                 }
@@ -468,6 +620,16 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 else{
                     associated.box.y = chao->getY() - altura;
                     pulosRestantes = numJumps;
+
+                    ultimoContatoX = associated.box.x;
+                    if(ultimoContatoX < chao->getX()){
+                        ultimoContatoX = chao->getX();
+                    }
+                    else if(ultimoContatoX > chao->getX() + chao->getLength() - largura){
+                        ultimoContatoX = chao->getX() + chao->getLength() - largura;
+                    }
+
+                    ultimoContatoY = associated.box.y;
                     caindo = false;
                     speed.y = 0;
                 }
@@ -534,14 +696,15 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
     }
 
     // caso seja um tipo de bloco de perigo o personagem perde uma vida
-    // e volta ao checkpoint
+    // e volta ao ultimo lugar que ele pisou, reseta a stamina
     if(chao->getTipo() == "lava"){
 
-        hp = hp - 1;
-        associated.box.x = GameData::checkPointX;
-        associated.box.y = GameData::checkPointY;
+        GameData::hp_atual = GameData::hp_atual - 1;
+        associated.box.x = ultimoContatoX;
+        associated.box.y = ultimoContatoY;
         speed.x = 0;
         speed.y = 0;
+        GameData::stamina_atual = GameData::stamina_total;
 
     }
     // caso seja de um tipo checkpoint e o jogador apertar x

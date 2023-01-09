@@ -10,6 +10,12 @@ class GameData {
         static bool playerVictory;
         static float checkPointX;
         static float checkPointY;
+
+        static int hp_atual;
+        static int hp_total;
+
+        static float stamina_atual;
+        static float stamina_total;
 };
 
 #endif

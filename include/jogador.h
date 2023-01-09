@@ -40,11 +40,13 @@ class Jogador : public Component{
         Vec2 speed;
         float atrito;
         float angle;
-        int hp;
 
         int gravidade;
         int gravidadeMax;
         int velPulo;
+
+        Timer* cd_stamina;
+        float stamina;
 
         Timer* encostar;
         Timer* invuneravel;
@@ -55,13 +57,19 @@ class Jogador : public Component{
         bool andandod;
         bool andandoe;
         bool agarrado;
+        bool pulando;
+        bool anima_caindo;
         int ladoGrudado;
+        int speed_anterior;
 
         int numJumps;
         int pulosRestantes;
 
         float posyh_anterior;
         float posy_anterior;
+
+        float ultimoContatoX;
+        float ultimoContatoY;
 
         Vec2 checkpoint;
 

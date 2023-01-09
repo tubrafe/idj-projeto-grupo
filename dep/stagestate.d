@@ -277,16 +277,20 @@ dep/stagestate.d bin/stagestate.o: src/stagestate.cpp \
  src/../include/../include/../include/sprite.h \
  src/../include/../include/../include/gameobject.h \
  src/../include/../include/sound.h src/../include/../include/vec2.h \
- src/../include/../include/tilemap.h src/../include/inputmanager.h \
+ src/../include/../include/tilemap.h src/../include/../include/text.h \
+ D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_ttf.h \
+ src/../include/../include/resources.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h \
- src/../include/camera.h src/../include/gameobject.h \
- src/../include/camerafollower.h src/../include/component.h \
- src/../include/alien.h src/../include/vec2.h src/../include/timer.h \
+ src/../include/../include/camera.h \
+ src/../include/../include/gameobject.h src/../include/inputmanager.h \
+ src/../include/camera.h src/../include/camerafollower.h \
+ src/../include/component.h src/../include/alien.h src/../include/vec2.h \
+ src/../include/timer.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/queue \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/deque \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_deque.h \
@@ -312,7 +316,18 @@ dep/stagestate.d bin/stagestate.o: src/stagestate.cpp \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++io.h \
- C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/fstream.tcc
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/fstream.tcc \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/sstream \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/sstream.tcc \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iomanip \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/locale \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/locale_facets_nonio.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ctime \
+ C:/TDM-GCC-32/include/time.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/time_members.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/messages_members.h \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/locale_facets_nonio.tcc \
+ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/locale_conv.h
 src/../include/stagestate.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -606,15 +621,19 @@ src/../include/../include/../include/gameobject.h:
 src/../include/../include/sound.h:
 src/../include/../include/vec2.h:
 src/../include/../include/tilemap.h:
-src/../include/inputmanager.h:
+src/../include/../include/text.h:
+D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_ttf.h:
+src/../include/../include/resources.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/limits:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/unordered_map.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/erase_if.h:
+src/../include/../include/camera.h:
+src/../include/../include/gameobject.h:
+src/../include/inputmanager.h:
 src/../include/camera.h:
-src/../include/gameobject.h:
 src/../include/camerafollower.h:
 src/../include/component.h:
 src/../include/alien.h:
@@ -655,3 +674,14 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++io.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/fstream.tcc:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/sstream:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/sstream.tcc:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iomanip:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/locale:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/locale_facets_nonio.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/ctime:
+C:/TDM-GCC-32/include/time.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/time_members.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/messages_members.h:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/locale_facets_nonio.tcc:
+C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/locale_conv.h:

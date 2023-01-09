@@ -292,12 +292,11 @@ dep/titlestate.d bin/titlestate.o: src/titlestate.cpp \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h \
  src/../include/state.h src/../include/titlestate.h \
  src/../include/stagestate.h src/../include/../include/tilemap.h \
- src/../include/camera.h src/../include/gameobject.h \
- src/../include/text.h \
+ src/../include/../include/text.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_ttf.h \
- src/../include/component.h src/../include/vec2.h src/../include/rect.h \
- src/../include/resources.h src/../include/camera.h \
- src/../include/timer.h
+ src/../include/../include/resources.h src/../include/../include/camera.h \
+ src/../include/../include/gameobject.h src/../include/camera.h \
+ src/../include/text.h
 src/../include/titlestate.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/iostream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/c++config.h:
@@ -607,13 +606,10 @@ src/../include/state.h:
 src/../include/titlestate.h:
 src/../include/stagestate.h:
 src/../include/../include/tilemap.h:
-src/../include/camera.h:
-src/../include/gameobject.h:
-src/../include/text.h:
+src/../include/../include/text.h:
 D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_ttf.h:
-src/../include/component.h:
-src/../include/vec2.h:
-src/../include/rect.h:
-src/../include/resources.h:
+src/../include/../include/resources.h:
+src/../include/../include/camera.h:
+src/../include/../include/gameobject.h:
 src/../include/camera.h:
-src/../include/timer.h:
+src/../include/text.h:

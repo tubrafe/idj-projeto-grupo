@@ -12,6 +12,8 @@
 #include "../include/jogador.h"
 #include <cmath>
 #include <fstream>
+#include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -36,7 +38,14 @@ StageState :: StageState () {
 	std::getline(save, linha);
 	GameData::checkPointY = std::stof(linha);
 
-	printf("%f %f\n", GameData::checkPointX, GameData::checkPointY);
+	std::getline(save, linha);
+	GameData::hp_atual = std::stoi(linha);
+
+	GameData::hp_total = 5;
+	GameData::stamina_total = 5;
+	GameData::stamina_atual = 5;
+
+
 }
 
 StageState :: ~StageState(){
@@ -135,6 +144,45 @@ void StageState :: LoadAssets() {
 
 
 
+	GameObject* vida = new GameObject();
+
+	std::string hud = std::to_string(GameData::hp_atual) + "." + std::to_string(GameData::hp_total) + "\n" + std::to_string(GameData::stamina_atual) + "." + std::to_string(GameData::stamina_total);
+
+	vida->box.x = Camera::GetPos().x; 
+	vida->box.y = Camera::GetPos().y - 25; 
+
+	Text* info = new Text(*vida, "./assets/font/Call me maybe.ttf", 50, Text::BLENDED, hud, SDL_Color{255, 0, 0, 255});
+
+	hp = info;
+
+	vida->AddComponent(info);
+	objectArray.emplace_back(vida);
+
+
+
+	GameObject* estamina = new GameObject();
+
+
+
+	std::stringstream sta_atual;
+	sta_atual << std::fixed << std::setprecision(1) << GameData::stamina_atual;
+	std::string atual = sta_atual.str();
+
+	std::stringstream sta_total;
+	sta_total << std::fixed << std::setprecision(1) << GameData::stamina_total;
+	std::string total = sta_total.str();
+
+	std::string hud2 = atual + " " + total;
+
+	estamina->box.x = Camera::GetPos().x; 
+	estamina->box.y = Camera::GetPos().y + 25; 
+
+	Text* info2 = new Text(*estamina, "./assets/font/Call me maybe.ttf", 50, Text::BLENDED, hud2, SDL_Color{255, 0, 0, 255});
+
+	stamina = info2;
+
+	estamina->AddComponent(info2);
+	objectArray.emplace_back(estamina);
 
 // n usado pq n ha aliens atualmente
 /*
@@ -182,6 +230,18 @@ void StageState :: Update (float dt) {
 
 
     if(Jogador::player == nullptr){
+		//salva no arquivo as variaveis caso o jogador morra
+			std::ofstream save ("./assets/save/save.txt"); 
+			std::string salvar = std::to_string(GameData::checkPointX);
+			salvar.append("\n");
+			salvar.append(std::to_string(GameData::checkPointY));
+			salvar.append("\n");
+			salvar.append(std::to_string(GameData::hp_atual));
+
+
+			save << salvar << endl;
+			save.close();
+
         GameData::playerVictory = false;
         popRequested = true;
 		EndState* fim = new EndState();
@@ -193,11 +253,13 @@ void StageState :: Update (float dt) {
 	else{
 		if((InputManager :: GetInstance().KeyPress(SDLK_ESCAPE) == true) or (InputManager :: GetInstance().QuitRequested() == true)){
 
-
+			//salva no arquivo as variaveis caso o jogador feche o jogo
 			std::ofstream save ("./assets/save/save.txt"); 
 			std::string salvar = std::to_string(GameData::checkPointX);
 			salvar.append("\n");
 			salvar.append(std::to_string(GameData::checkPointY));
+			salvar.append("\n");
+			salvar.append(std::to_string(GameData::hp_atual));
 
 
 			save << salvar << endl;
@@ -210,6 +272,31 @@ void StageState :: Update (float dt) {
 		};
 		Camera :: Update(dt);
 		int i, j;
+
+		//atualiza a posicao da hud(vida e stamina na tela) para acompanhar a camera
+		for (i=0;i<valor;i++){
+			Jogador* player = (Jogador*)objectArray[i]->GetComponent("Jogador");
+
+			if(player != nullptr){
+				hp->SetPos(Vec2(Camera::GetPos().x, Camera::GetPos().y - 25));
+				std::string hud = std::to_string(GameData::hp_atual) + "." + std::to_string(GameData::hp_total);
+				hp->SetText(hud);
+
+				stamina->SetPos(Vec2(Camera::GetPos().x, Camera::GetPos().y + 25));
+				std::stringstream sta_atual;
+				sta_atual << std::fixed << std::setprecision(1) << GameData::stamina_atual;
+				std::string atual = sta_atual.str();
+
+				std::stringstream sta_total;
+				sta_total << std::fixed << std::setprecision(1) << GameData::stamina_total;
+				std::string total = sta_total.str();
+
+				std::string hud2 = atual + " " + total;
+
+
+				stamina->SetText(hud2);
+			}
+		}
 		for (i=0;i<valor;i++){
 			
 			objectArray[i]->Update(dt);

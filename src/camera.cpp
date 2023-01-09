@@ -67,3 +67,11 @@ void Camera :: Update (float dt){
 
 
 }
+
+// retorna a posicao da camera
+Vec2 Camera:: GetPos(){
+
+    return pos;
+
+
+}

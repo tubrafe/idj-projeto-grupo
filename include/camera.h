@@ -17,6 +17,8 @@ class Camera {
         static Vec2 pos;
         static Vec2 speed;
 
+        static Vec2 GetPos();
+
 
     private:
          static GameObject* focus;

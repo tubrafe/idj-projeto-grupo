@@ -204,3 +204,11 @@ void Text :: RemakeTexture (){
 	associated.box.w = w;
 	associated.box.h = h;
 } 
+
+
+// atualiza a posicao do texto
+void Text :: SetPos (Vec2 pos){
+
+    associated.box.x = pos.x;
+    associated.box.y = pos.y;
+}
