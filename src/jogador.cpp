@@ -244,7 +244,7 @@ void Jogador :: Update (float dt){
 
             if(jog!= nullptr){
                 jog->setTexture("./assets/img/subida.png");
-                jog->SetFrameCount(5);
+                jog->SetFrameCount(3);
                 jog->SetFrameTime(0.2); 
             }        
         

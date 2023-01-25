@@ -61,7 +61,7 @@ void StageState :: LoadAssets() {
 	GameObject *objeto = new GameObject();
 
 
-	Sprite* bg = new Sprite(*objeto,"./assets/img/forest.jpg");
+	Sprite* bg = new Sprite(*objeto,"./assets/img/montanhas.png");
 	objeto->box.x = 0;
 	objeto->box.y = 0;
 	
@@ -172,7 +172,7 @@ void StageState :: LoadAssets() {
 	sta_total << std::fixed << std::setprecision(1) << GameData::stamina_total;
 	std::string total = sta_total.str();
 
-	std::string hud2 = atual + " " + total;
+	std::string hud2 = atual + "/" + total;
 
 	estamina->box.x = Camera::GetPos().x; 
 	estamina->box.y = Camera::GetPos().y + 25; 
@@ -185,7 +185,7 @@ void StageState :: LoadAssets() {
 	objectArray.emplace_back(estamina);
 
 // n usado pq n ha aliens atualmente
-/*
+
 	int i;
 
 	for(i=0;i<4;i++){
@@ -218,7 +218,7 @@ void StageState :: LoadAssets() {
 		objectArray.emplace_back(inimigo);
 	}
 
-*/
+
     backgroundMusic = new Music("./assets/audio/TRY.mp3");
 
 }
