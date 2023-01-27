@@ -84,7 +84,7 @@ void StageState :: LoadAssets() {
 */
 	GameObject* chao = new GameObject();
 
-	Bloco* plataforma = new Bloco(*chao,"./assets/img/bloco.png",750,750, "terra", Vec2(1,1.5));
+	Bloco* plataforma = new Bloco(*chao,"./assets/img/bloco.png",750,800, "terra", Vec2(1,1.5));
 
 	chao->AddComponent(plataforma);
 	objectArray.emplace_back(chao);

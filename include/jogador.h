@@ -61,6 +61,10 @@ class Jogador : public Component{
         bool anima_caindo;
         int ladoGrudado;
         int speed_anterior;
+        bool ladoVirado;
+
+        Timer* dash_cd;
+        bool dash;
 
         int numJumps;
         int pulosRestantes;

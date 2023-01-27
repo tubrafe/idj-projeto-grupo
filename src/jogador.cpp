@@ -49,6 +49,12 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     agarrado = false;
     andandod = false;
     andandoe = false;
+    dash = false;
+
+    // guarda o ultimo lado pra o qual o personagem ta virado para usar o dash
+    ladoVirado = true;
+
+    dash_cd = new Timer();
 
     // serve para o controle das animacoes quando ocorre um pulo
     anima_caindo = false;
@@ -199,6 +205,7 @@ void Jogador :: Update (float dt){
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
+                ladoVirado = true;
             }
             else if(andandoe == true){
                 jog->setTexture("./assets/img/pers_parado2.png");
@@ -207,6 +214,7 @@ void Jogador :: Update (float dt){
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
+                ladoVirado = false;
             }
 
             // esses dois casos servem para quando o jogador pular e parar de se movimentar, para que o sprite esteja correto dele parado
@@ -217,6 +225,7 @@ void Jogador :: Update (float dt){
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
+                ladoVirado = true;
             }
             else if((speed_anterior == -1) and (!caindo)){
                 jog->setTexture("./assets/img/pers_parado2.png");
@@ -225,6 +234,7 @@ void Jogador :: Update (float dt){
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
+                ladoVirado = false;
             }
         }
 
@@ -270,6 +280,17 @@ void Jogador :: Update (float dt){
 
     }
 
+
+//ativa o dash
+    if((InputManager :: GetInstance().KeyPress(SDLK_z)) and (GameData::stamina_atual>2.5) and (dash == false)){
+
+        dash = true;
+        GameData::stamina_atual = GameData::stamina_atual - 2.5;
+        dash_cd->Restart();
+
+    }
+
+
     // movimento para a direita
     if(InputManager :: GetInstance().IsKeyDown(SDLK_d)){
 
@@ -282,12 +303,14 @@ void Jogador :: Update (float dt){
             if(jog!= nullptr){
                 jog->setTexture("./assets/img/pers_andando1.png");
                 jog->SetFrameCount(5);
-                jog->SetFrameTime(0.2);      
+                jog->SetFrameTime(0.2); 
+
             }
             andandod = true;
             anima_caindo = false;
             parado = false;
             andandoe = false;
+            ladoVirado = true;
         }
 
         if(speed.x < velocidade){
@@ -314,7 +337,8 @@ void Jogador :: Update (float dt){
             andandoe = true;   
             anima_caindo = false;
             parado = false;
-            andandod = false;     
+            andandod = false;
+            ladoVirado = false;     
         }
 
         if(speed.x > -velocidade){
@@ -345,6 +369,7 @@ void Jogador :: Update (float dt){
                 anima_caindo = false;
                 parado = false;
                 andandoe = false;
+                ladoVirado = true;
             }
         }
         else if (speed.x < 0){
@@ -362,7 +387,8 @@ void Jogador :: Update (float dt){
                 andandoe = true;   
                 anima_caindo = false;
                 parado = false;
-                andandod = false;     
+                andandod = false; 
+                ladoVirado = false;    
             }
         }
         else{
@@ -381,7 +407,23 @@ void Jogador :: Update (float dt){
         largura = jog->GetWidth();
         altura = jog->GetHeight();       
     }
-
+//atualiza a velocidade para ela ser bem grande durante o dash
+    if(dash == true){
+        
+        if(dash_cd->Get()<0.2){
+            if(ladoVirado == true){
+                speed.x = 100;
+            }
+            else{
+                speed.x = -100;
+            }
+        }
+        else{
+            dash = false;
+            speed.x = 0;
+        }
+        dash_cd->Update(dt);
+    }
 
     // atualiza a posicao do jogador
     Vec2 temp;
