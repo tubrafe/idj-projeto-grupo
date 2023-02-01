@@ -116,6 +116,22 @@ void Bloco :: NotifyCollision ( GameObject& other){
 
         }
 
+
+    if(this->tipo == "mascara"){
+
+            if(InputManager :: GetInstance().KeyPress(SDLK_q)){
+
+                GameData::item = 1;
+                GameObject* morte = new GameObject();
+
+                morte->box = associated.box;
+
+                associated.RequestDelete(); 
+
+            }
+
+        }    
+
     }
 
 }
