@@ -8,5 +8,8 @@ float GameData::checkPointY = 0;
 int GameData::hp_atual = 0;
 int GameData::hp_total = 0;
 
+
+int GameData::item = 0;
+
 float GameData::stamina_atual = 0;
 float GameData::stamina_total = 0;

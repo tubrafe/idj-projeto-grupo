@@ -14,6 +14,8 @@ class GameData {
         static int hp_atual;
         static int hp_total;
 
+        static int item;
+
         static float stamina_atual;
         static float stamina_total;
 };

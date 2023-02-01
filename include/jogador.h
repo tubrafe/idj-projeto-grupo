@@ -76,6 +76,7 @@ class Jogador : public Component{
         float ultimoContatoY;
 
         Vec2 checkpoint;
+        int mascara;
 
         float altura;
         float largura;
