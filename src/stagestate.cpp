@@ -248,7 +248,7 @@ void StageState :: LoadAssets() {
 		inimigo->AddComponent(alienigena);
 		objectArray.emplace_back(inimigo);
 	}
-
+*/
 
     backgroundMusic = new Music("./assets/audio/TRY.mp3");
 
