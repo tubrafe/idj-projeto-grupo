@@ -45,6 +45,7 @@ class Jogador : public Component{
         int gravidadeMax;
         int velPulo;
 
+        Timer* cd_hp;
         Timer* cd_stamina;
         float stamina;
 

@@ -87,7 +87,7 @@ void StageState :: LoadAssets() {
 */
 	GameObject* chao = new GameObject();
 
-	Bloco* plataforma = new Bloco(*chao,"./assets/img/bloco.png",750,800, "terra", Vec2(1,1.5));
+	Bloco* plataforma = new Bloco(*chao,"./assets/img/bloco.png",750,750, "terra", Vec2(1,1.5));
 
 	chao->AddComponent(plataforma);
 	objectArray.emplace_back(chao);
@@ -99,6 +99,13 @@ void StageState :: LoadAssets() {
 
 	chao2->AddComponent(plataforma2);
 	objectArray.emplace_back(chao2);
+
+	GameObject* veneno = new GameObject();
+
+	Bloco* chao_veneno = new Bloco(*veneno,"./assets/img/fumaca.png",2200,750, "veneno", Vec2(1,1.5));
+
+	veneno->AddComponent(chao_veneno);
+	objectArray.emplace_back(veneno);
 
 
 	GameObject* lava = new GameObject();

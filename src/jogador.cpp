@@ -30,6 +30,7 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
 
 
     cd_stamina = new Timer();
+    cd_hp = new Timer();
     
     gravidade = 2;
     gravidadeMax = 80;
@@ -531,6 +532,8 @@ Rect Jogador :: GetPos(){
 // variavel ultimo contato adicionada para o jogador ao cair voltar ao ultimo lugar que pisou
 void Jogador :: movimentacaoTipoChao(Bloco *chao){
 
+
+    float var =0;
     // caso colida com o chao comum
     if(chao->getTipo() == "terra"){
 
@@ -749,6 +752,16 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
         GameData::stamina_atual = GameData::stamina_total;
 
     }
+
+    if(chao->getTipo() == "veneno" && GameData::item == 0){
+
+
+        GameData::hp_atual = GameData::hp_atual - 1;
+        GameData::stamina_atual = GameData::stamina_total;
+            
+
+    }
+
     // caso seja de um tipo checkpoint e o jogador apertar x
     // o checkpoint do jogador eh atualizado para a posicao do bloco
       if(chao->getTipo() == "checkpoint"){
