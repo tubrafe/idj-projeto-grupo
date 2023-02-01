@@ -64,7 +64,7 @@ void StageState :: LoadAssets() {
 	GameObject *objeto = new GameObject();
 
 
-	Sprite* bg = new Sprite(*objeto,"./assets/img/montanhas.png");
+	Sprite* bg = new Sprite(*objeto,"./assets/img/forest.jpg");
 	objeto->box.x = 0;
 	objeto->box.y = 0;
 	
@@ -255,9 +255,9 @@ void StageState :: LoadAssets() {
 		inimigo->AddComponent(alienigena);
 		objectArray.emplace_back(inimigo);
 	}
-*/
 
-    backgroundMusic = new Music("./assets/audio/TRY.mp3");
+*/
+    backgroundMusic = new Music("");
 
 }
 
@@ -409,7 +409,7 @@ void StageState :: Render(){
     int i;
     for (i=0;i<valor;i++){
 		if(objectArray[i]->GetComponent("Jogador")){
-			printf("camera : %f %f\n", objectArray[i]->box.x, objectArray[i]->box.y);
+			//printf("camera : %f %f\n", objectArray[i]->box.x, objectArray[i]->box.y);
 
 		}
 

@@ -110,25 +110,24 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc \
- src/../include/SDL_include.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_main.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_stdinc.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_config.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_platform.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/begin_code.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/close_code.h \
+ src/../include/SDL_include.h C:\SDL2-2.0.22/include/SDL2/SDL.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_main.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_stdinc.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_config.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_platform.h \
+ C:\SDL2-2.0.22/include/SDL2/begin_code.h \
+ C:\SDL2-2.0.22/include/SDL2/close_code.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdlib.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_assert.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_atomic.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_audio.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_error.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_endian.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mutex.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_thread.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_rwops.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_clipboard.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_cpuinfo.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_assert.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_atomic.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_audio.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_error.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_endian.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_mutex.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_thread.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_rwops.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_clipboard.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_cpuinfo.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/immintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/mmintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/xmmintrin.h \
@@ -197,42 +196,42 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/clflushoptintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/wbnoinvdintrin.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/pkuintrin.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_events.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_video.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_pixels.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_rect.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_surface.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_blendmode.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_keyboard.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_keycode.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_scancode.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mouse.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_joystick.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_gamecontroller.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_sensor.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_quit.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_gesture.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_touch.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_filesystem.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_haptic.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_hidapi.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_hints.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_loadso.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_log.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_messagebox.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_metal.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_power.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_render.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_shape.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_system.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_timer.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_version.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_locale.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_misc.h \
- src/../include/component.h src/../include/vec2.h src/../include/sprite.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_image.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h \
- src/../include/timer.h src/../include/collider.h src/../include/rect.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_events.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_video.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_pixels.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_rect.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_surface.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_blendmode.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_keyboard.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_keycode.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_scancode.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_mouse.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_joystick.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_gamecontroller.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_sensor.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_quit.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_gesture.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_touch.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_filesystem.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_haptic.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_hidapi.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_hints.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_loadso.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_log.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_messagebox.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_metal.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_power.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_render.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_shape.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_system.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_timer.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_version.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_locale.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_misc.h src/../include/component.h \
+ src/../include/vec2.h src/../include/sprite.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_image.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL.h src/../include/timer.h \
+ src/../include/collider.h src/../include/rect.h \
  src/../include/../src/Collision.cpp include/Rect.h include/Vec2.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/algorithm \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/utility \
@@ -275,7 +274,7 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
  src/../include/state.h src/../include/../include/music.h \
  src/../include/../include/SDL_include.h \
- D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h \
+ C:\SDL2-2.0.22/include/SDL2/SDL_mixer.h \
  src/../include/../include/sprite.h \
  src/../include/../include/gameobject.h src/../include/../include/rect.h \
  src/../include/../include/sound.h src/../include/../include/component.h \
@@ -416,24 +415,24 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/ostream.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/istream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/istream.tcc:
 src/../include/SDL_include.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_main.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_stdinc.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_config.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_platform.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/begin_code.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/close_code.h:
+C:\SDL2-2.0.22/include/SDL2/SDL.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_main.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_stdinc.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_config.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_platform.h:
+C:\SDL2-2.0.22/include/SDL2/begin_code.h:
+C:\SDL2-2.0.22/include/SDL2/close_code.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/stdlib.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_assert.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_atomic.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_audio.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_error.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_endian.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mutex.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_thread.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_rwops.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_clipboard.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_cpuinfo.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_assert.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_atomic.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_audio.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_error.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_endian.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_mutex.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_thread.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_rwops.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_clipboard.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_cpuinfo.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/immintrin.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/mmintrin.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/xmmintrin.h:
@@ -502,43 +501,43 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/clwbintrin.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/clflushoptintrin.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/wbnoinvdintrin.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/pkuintrin.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_events.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_video.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_pixels.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_rect.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_surface.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_blendmode.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_keyboard.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_keycode.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_scancode.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mouse.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_joystick.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_gamecontroller.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_sensor.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_quit.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_gesture.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_touch.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_filesystem.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_haptic.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_hidapi.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_hints.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_loadso.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_log.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_messagebox.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_metal.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_power.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_render.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_shape.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_system.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_timer.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_version.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_locale.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_misc.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_events.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_video.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_pixels.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_rect.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_surface.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_blendmode.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_keyboard.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_keycode.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_scancode.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_mouse.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_joystick.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_gamecontroller.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_sensor.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_quit.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_gesture.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_touch.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_filesystem.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_haptic.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_hidapi.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_hints.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_loadso.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_log.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_messagebox.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_metal.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_power.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_render.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_shape.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_system.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_timer.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_version.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_locale.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_misc.h:
 src/../include/component.h:
 src/../include/vec2.h:
 src/../include/sprite.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_image.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_image.h:
+C:\SDL2-2.0.22/include/SDL2/SDL.h:
 src/../include/timer.h:
 src/../include/collider.h:
 src/../include/rect.h:
@@ -587,7 +586,7 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 src/../include/state.h:
 src/../include/../include/music.h:
 src/../include/../include/SDL_include.h:
-D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h:
+C:\SDL2-2.0.22/include/SDL2/SDL_mixer.h:
 src/../include/../include/sprite.h:
 src/../include/../include/gameobject.h:
 src/../include/../include/rect.h:
