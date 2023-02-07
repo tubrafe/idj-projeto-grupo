@@ -13,6 +13,7 @@
 #include "rect.h"
 #include "timer.h"
 #include "bloco.h"
+#include "sound.h"
 
 
 class GameObject;
@@ -59,6 +60,7 @@ class Jogador : public Component{
         bool agarrado;
         bool pulando;
         bool anima_caindo;
+        bool anima_grudado;
         int ladoGrudado;
         int speed_anterior;
         bool ladoVirado;
@@ -79,6 +81,11 @@ class Jogador : public Component{
 
         float altura;
         float largura;
+
+        Sound* sons;
+
+        bool damaged;
+        bool caiu;
 
 };
 

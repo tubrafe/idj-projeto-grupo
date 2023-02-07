@@ -88,3 +88,9 @@ bool Sound :: Is(std::string type){
     return false;
 
 }
+
+void Sound :: setSound(std::string file){
+
+    this->Open(file);
+
+}

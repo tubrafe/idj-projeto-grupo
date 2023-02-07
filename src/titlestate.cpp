@@ -33,6 +33,7 @@ TitleState :: TitleState(){
     timer = new Timer();
     cooldown = 0.2;
 
+    backgroundMusic = new Music("./assets/audio/titulo.mp3");
 
 }
 
@@ -57,7 +58,9 @@ TitleState :: ~TitleState(){
     objectArray.clear();
 }
 
-void TitleState::Start(){}
+void TitleState::Start(){
+    backgroundMusic->Play();
+}
 
 void TitleState::LoadAssets(){}
 

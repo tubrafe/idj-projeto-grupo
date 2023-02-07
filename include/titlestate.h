@@ -35,6 +35,7 @@ class TitleState : public State {
     private:
         Timer* timer;
         float cooldown;
+        Music* backgroundMusic;
 
 
 };

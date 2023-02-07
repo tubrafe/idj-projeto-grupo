@@ -84,7 +84,7 @@ void StageState :: LoadAssets() {
 */
 	GameObject* chao = new GameObject();
 
-	Bloco* plataforma = new Bloco(*chao,"./assets/img/bloco.png",750,800, "terra", Vec2(1,1.5));
+	Bloco* plataforma = new Bloco(*chao,"./assets/img/plataforma_1.png",750,800, "terra", Vec2(1,1));
 
 	chao->AddComponent(plataforma);
 	objectArray.emplace_back(chao);
@@ -92,7 +92,7 @@ void StageState :: LoadAssets() {
 
 	GameObject* chao2 = new GameObject();
 
-	Bloco* plataforma2 = new Bloco(*chao2,"./assets/img/bloco.png",2200,750, "terra", Vec2(1,1.5));
+	Bloco* plataforma2 = new Bloco(*chao2,"./assets/img/plataforma_1.png",1600,800, "terra", Vec2(1,1));
 
 	chao2->AddComponent(plataforma2);
 	objectArray.emplace_back(chao2);
@@ -117,7 +117,7 @@ void StageState :: LoadAssets() {
 
 	GameObject* checkpoint2 = new GameObject();
 
-	Bloco* fogueira2 = new Bloco(*checkpoint2,"./assets/img/camp_aceso.png",2500,640, "checkpoint", Vec2(1,1));
+	Bloco* fogueira2 = new Bloco(*checkpoint2,"./assets/img/camp_aceso.png",1500,640, "checkpoint", Vec2(1,1));
 
 	checkpoint2->AddComponent(fogueira2);
 	objectArray.emplace_back(checkpoint2);
@@ -185,7 +185,7 @@ void StageState :: LoadAssets() {
 	objectArray.emplace_back(estamina);
 
 // n usado pq n ha aliens atualmente
-
+/*
 	int i;
 
 	for(i=0;i<4;i++){
@@ -218,8 +218,8 @@ void StageState :: LoadAssets() {
 		objectArray.emplace_back(inimigo);
 	}
 
-
-    backgroundMusic = new Music("./assets/audio/TRY.mp3");
+*/
+    backgroundMusic = new Music("./assets/audio/fase.mp3");
 
 }
 

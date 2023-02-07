@@ -286,7 +286,8 @@ dep/bloco.d bin/bloco.o: src/bloco.cpp src/../include/bloco.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_stack.h \
  src/../include/state.h src/../include/titlestate.h \
  src/../include/../include/state.h src/../include/jogador.h \
- src/../include/bloco.h src/../include/inputmanager.h \
+ src/../include/bloco.h src/../include/sound.h \
+ src/../include/inputmanager.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
@@ -606,6 +607,7 @@ src/../include/titlestate.h:
 src/../include/../include/state.h:
 src/../include/jogador.h:
 src/../include/bloco.h:
+src/../include/sound.h:
 src/../include/inputmanager.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/unordered_map:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/hashtable.h:

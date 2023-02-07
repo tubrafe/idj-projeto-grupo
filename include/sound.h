@@ -24,6 +24,8 @@ class Sound : public Component {
         void Render();
         bool Is(std::string type);
 
+        void setSound(std::string file);
+
 
 
 

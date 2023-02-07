@@ -50,6 +50,9 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     andandod = false;
     andandoe = false;
     dash = false;
+    anima_grudado = false;
+    damaged = false;
+    caiu = false;
 
     // guarda o ultimo lado pra o qual o personagem ta virado para usar o dash
     ladoVirado = true;
@@ -59,6 +62,9 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     // serve para o controle das animacoes quando ocorre um pulo
     anima_caindo = false;
     speed_anterior = 1;
+
+    //sons
+    sons = new Sound(associated, "./assets/audio/boom.wav");
 
     // pega o tamanho do sprite atual do jogador
     Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
@@ -117,6 +123,30 @@ void Jogador :: Update (float dt){
 
     }
 
+
+    if(!damaged){
+
+        invuneravel->Restart();
+
+    }
+    else{
+        invuneravel->Update(dt);
+        if(invuneravel->Get() > 0.2){
+            damaged = false;
+        }
+
+    }
+
+    if(!caiu){
+        encostar->Restart();
+    }
+    else{
+        encostar->Update(dt);
+        if(encostar->Get() > 0.2){
+            caiu = false;
+        }
+
+    }
 // isso eh usado para caso o jogador encoste em um inimigo, por isso n esta sendo usado no momento
 
 /*
@@ -148,6 +178,18 @@ void Jogador :: Update (float dt){
     if (caindo){
 
         if((agarrado) and (GameData::stamina_atual > 0)){
+
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+            if(anima_grudado == false){
+                if(jog!= nullptr){
+                    jog->setTexture("./assets/img/grudado.png");
+                    jog->SetFrameCount(4);
+                    jog->SetFrameTime(0.2); 
+                } 
+                sons->Stop();
+                anima_grudado = true;
+            }
+
            if(speed.y < 1){
                 speed.y = speed.y + 1;
             }
@@ -157,6 +199,8 @@ void Jogador :: Update (float dt){
 
         }
         else{
+            anima_grudado = false;
+            anima_caindo = false;
             if(speed.y < gravidadeMax){
                 speed.y = speed.y + gravidade;
             }
@@ -169,7 +213,7 @@ void Jogador :: Update (float dt){
     // serve para colocar a animacao do personagem caindo
     if((caindo)){
 
-        if(speed.y >= 0){
+        if((speed.y >= 0)){
 
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
             if(anima_caindo == false){
@@ -178,6 +222,9 @@ void Jogador :: Update (float dt){
                     jog->SetFrameCount(2);
                     jog->SetFrameTime(0.2); 
                 } 
+                if((!dash) and (!damaged) and (!caiu)){
+                    sons->Stop();
+                }
                 anima_caindo = true;
             }
             parado = false;
@@ -202,19 +249,27 @@ void Jogador :: Update (float dt){
                 jog->setTexture("./assets/img/pers_parado1.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
+                if((!dash) and (!damaged) and (!caiu)){
+                    sons->Stop();
+                }
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
                 ladoVirado = true;
+                anima_grudado = false;
             }
             else if(andandoe == true){
                 jog->setTexture("./assets/img/pers_parado2.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
+                if((!dash) and (!damaged) and (!caiu)){
+                    sons->Stop();
+                }
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
                 ladoVirado = false;
+                anima_grudado = false;
             }
 
             // esses dois casos servem para quando o jogador pular e parar de se movimentar, para que o sprite esteja correto dele parado
@@ -222,19 +277,27 @@ void Jogador :: Update (float dt){
                 jog->setTexture("./assets/img/pers_parado1.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
+                if((!dash) and (!damaged) and (!caiu)){
+                    sons->Stop();
+                }
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
                 ladoVirado = true;
+                anima_grudado = false;
             }
             else if((speed_anterior == -1) and (!caindo)){
                 jog->setTexture("./assets/img/pers_parado2.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
+                if((!dash) and (!damaged) and (!caiu)){
+                    sons->Stop();
+                }
                 andandod = false;
                 andandoe = false;
                 anima_caindo = false;
                 ladoVirado = false;
+                anima_grudado = false;
             }
         }
 
@@ -253,7 +316,15 @@ void Jogador :: Update (float dt){
         Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
             if(jog!= nullptr){
-                jog->setTexture("./assets/img/subida.png");
+                if(ladoVirado == true){
+                    jog->setTexture("./assets/img/subida.png");
+                }
+                else{
+                    jog->setTexture("./assets/img/subida2.png");
+                }
+                sons->Stop();
+                sons->setSound("./assets/audio/pulo.wav");
+                sons->Play();
                 jog->SetFrameCount(3);
                 jog->SetFrameTime(0.2); 
             }        
@@ -262,6 +333,7 @@ void Jogador :: Update (float dt){
         andandod = false;
         andandoe = false;
         anima_caindo = false;
+        anima_grudado = false;
         speed.y = velPulo;
 
     }
@@ -271,6 +343,19 @@ void Jogador :: Update (float dt){
     if((InputManager :: GetInstance().KeyPress(SDLK_SPACE)) and (agarrado) and (GameData::stamina_atual>0)){
 
         speed.y = velPulo;
+        Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+        pulando = true;
+        if(jog!= nullptr){
+            if(ladoVirado == true){
+                jog->setTexture("./assets/img/subida.png");
+            }
+            else{
+                jog->setTexture("./assets/img/subida2.png");
+            }
+            sons->Stop();
+            jog->SetFrameCount(3);
+            jog->SetFrameTime(0.2); 
+        }
         if(ladoGrudado == 1){
             speed.x = 10;
         }
@@ -286,6 +371,9 @@ void Jogador :: Update (float dt){
 
         dash = true;
         GameData::stamina_atual = GameData::stamina_atual - 2.5;
+        sons->Stop();
+        sons->setSound("./assets/audio/dash.wav");
+        sons->Play();
         dash_cd->Restart();
 
     }
@@ -306,11 +394,18 @@ void Jogador :: Update (float dt){
                 jog->SetFrameTime(0.2); 
 
             }
+
+                sons->Stop();
+                sons->setSound("./assets/audio/passos.wav");
+                sons->Play();
+
+
             andandod = true;
             anima_caindo = false;
             parado = false;
             andandoe = false;
             ladoVirado = true;
+            anima_grudado = false;
         }
 
         if(speed.x < velocidade){
@@ -333,12 +428,20 @@ void Jogador :: Update (float dt){
                 jog->setTexture("./assets/img/pers_andando2.png");
                 jog->SetFrameCount(5);
                 jog->SetFrameTime(0.2); 
-            }        
+            }  
+
+                sons->Stop();
+                sons->setSound("./assets/audio/passos.wav");
+                sons->Play(); 
+
+
+
             andandoe = true;   
             anima_caindo = false;
             parado = false;
             andandod = false;
-            ladoVirado = false;     
+            ladoVirado = false; 
+            anima_grudado = false;    
         }
 
         if(speed.x > -velocidade){
@@ -357,7 +460,7 @@ void Jogador :: Update (float dt){
             speed.x = speed.x - atrito;
             speed_anterior = 1;
 
-            if((!caindo) and (!andandod)){
+            if((!caindo) and (!andandod) and (!pulando)){
                 Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
                 if(jog!= nullptr){
@@ -365,30 +468,44 @@ void Jogador :: Update (float dt){
                     jog->SetFrameCount(5);
                     jog->SetFrameTime(0.2);      
                 }
+
+                sons->Stop();
+                sons->setSound("./assets/audio/passos.wav");
+                sons->Play();
+
+            
                 andandod = true;
                 anima_caindo = false;
                 parado = false;
                 andandoe = false;
                 ladoVirado = true;
+                anima_grudado = false;
             }
         }
         else if (speed.x < 0){
             speed.x = speed.x + atrito;
             speed_anterior = -1;
 
-            if((!caindo) and (!andandoe)){
+            if((!caindo) and (!andandoe) and (!pulando)){
                 Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
                 if(jog!= nullptr){
                     jog->setTexture("./assets/img/pers_andando2.png");
                     jog->SetFrameCount(5);
                     jog->SetFrameTime(0.2); 
-                }        
+                }  
+
+                sons->Stop();
+                sons->setSound("./assets/audio/passos.wav");
+                sons->Play();
+
+
                 andandoe = true;   
                 anima_caindo = false;
                 parado = false;
                 andandod = false; 
-                ladoVirado = false;    
+                ladoVirado = false;  
+                anima_grudado = false;  
             }
         }
         else{
@@ -582,7 +699,12 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             else if(ultimoContatoX > chao->getX() + chao->getLength() - largura){
                 ultimoContatoX = chao->getX() + chao->getLength() - largura;
             }
-
+            if(posy_anterior < associated.box.y){
+                caiu = true;
+                sons->Stop();
+                sons->setSound("./assets/audio/queda.wav");
+                sons->Play();                       
+            }
             ultimoContatoY = associated.box.y;
             pulosRestantes = numJumps;
             speed.y = 0;
@@ -630,7 +752,12 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                     else if(ultimoContatoX > chao->getX() + chao->getLength() - largura){
                         ultimoContatoX = chao->getX() + chao->getLength() - largura;
                     }
-
+                    if(posy_anterior < associated.box.y){
+                        caiu = true;
+                        sons->Stop();
+                        sons->setSound("./assets/audio/queda.wav");
+                        sons->Play();                       
+                    }
                     ultimoContatoY = associated.box.y;
                     pulosRestantes = numJumps;
                     speed.y = 0;
@@ -670,7 +797,12 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                     else if(ultimoContatoX > chao->getX() + chao->getLength() - largura){
                         ultimoContatoX = chao->getX() + chao->getLength() - largura;
                     }
-
+                    if(posy_anterior < associated.box.y){
+                        caiu = true;
+                        sons->Stop();
+                        sons->setSound("./assets/audio/queda.wav");
+                        sons->Play();                       
+                    }                    
                     ultimoContatoY = associated.box.y;
                     caindo = false;
                     speed.y = 0;
@@ -747,6 +879,10 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
         speed.x = 0;
         speed.y = 0;
         GameData::stamina_atual = GameData::stamina_total;
+        sons->Stop();
+        sons->setSound("./assets/audio/dano.wav");
+        sons->Play();
+        damaged = true;
 
     }
     // caso seja de um tipo checkpoint e o jogador apertar x
