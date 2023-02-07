@@ -44,6 +44,9 @@ StageState :: StageState () {
 	GameData::hp_total = 5;
 	GameData::stamina_total = 5;
 	GameData::stamina_atual = 5;
+	
+	std::getline(save, linha);
+	GameData::item = std::stoi(linha);
 
 
 }
@@ -105,6 +108,15 @@ void StageState :: LoadAssets() {
 	lava->AddComponent(perigo);
 	objectArray.emplace_back(lava);
 
+	if(GameData::item == 0){
+			GameObject* mascara = new GameObject();
+
+			Bloco* gas_mask = new Bloco(*mascara,"./assets/img/gas_mask_2.png",1000,640, "mascara", Vec2(1,1));
+
+			mascara->AddComponent(gas_mask);
+			objectArray.emplace_back(mascara);
+
+	}
 
 
 	GameObject* checkpoint = new GameObject();
@@ -146,7 +158,7 @@ void StageState :: LoadAssets() {
 
 	GameObject* vida = new GameObject();
 
-	std::string hud = std::to_string(GameData::hp_atual) + "." + std::to_string(GameData::hp_total) + "\n" + std::to_string(GameData::stamina_atual) + "." + std::to_string(GameData::stamina_total);
+	std::string hud = std::to_string(GameData::hp_atual) + "I" + std::to_string(GameData::hp_total) + "\n" + std::to_string(GameData::stamina_atual) + "." + std::to_string(GameData::stamina_total) + + "\n" + std::to_string(GameData::item) ;
 
 	vida->box.x = Camera::GetPos().x; 
 	vida->box.y = Camera::GetPos().y - 25; 
@@ -172,7 +184,7 @@ void StageState :: LoadAssets() {
 	sta_total << std::fixed << std::setprecision(1) << GameData::stamina_total;
 	std::string total = sta_total.str();
 
-	std::string hud2 = atual + "/" + total;
+	std::string hud2 = atual + " " + total;
 
 	estamina->box.x = Camera::GetPos().x; 
 	estamina->box.y = Camera::GetPos().y + 25; 
@@ -183,6 +195,25 @@ void StageState :: LoadAssets() {
 
 	estamina->AddComponent(info2);
 	objectArray.emplace_back(estamina);
+
+
+	GameObject* n_item = new GameObject();
+
+	std::stringstream item;
+	item << std::fixed << std::setprecision(1) << GameData::item;
+	std::string itemizacao = item.str();
+
+	std::string hud3 = itemizacao;
+
+	n_item->box.x = Camera::GetPos().x; 
+	n_item->box.y = Camera::GetPos().y + 75; 
+
+	Text* info3 = new Text(*n_item, "./assets/font/Call me maybe.ttf", 50, Text::BLENDED, hud3, SDL_Color{255, 0, 0, 255});
+
+	mascara = info3;
+
+	n_item->AddComponent(info3);
+	objectArray.emplace_back(n_item);
 
 // n usado pq n ha aliens atualmente
 /*
@@ -237,6 +268,8 @@ void StageState :: Update (float dt) {
 			salvar.append(std::to_string(GameData::checkPointY));
 			salvar.append("\n");
 			salvar.append(std::to_string(GameData::hp_atual));
+			salvar.append("\n");
+			salvar.append(std::to_string(GameData::item));
 
 
 			save << salvar << endl;
@@ -260,7 +293,9 @@ void StageState :: Update (float dt) {
 			salvar.append(std::to_string(GameData::checkPointY));
 			salvar.append("\n");
 			salvar.append(std::to_string(GameData::hp_atual));
-
+			salvar.append("\n");
+			salvar.append(std::to_string(GameData::item));
+			
 
 			save << salvar << endl;
 			save.close();
@@ -279,7 +314,7 @@ void StageState :: Update (float dt) {
 
 			if(player != nullptr){
 				hp->SetPos(Vec2(Camera::GetPos().x, Camera::GetPos().y - 25));
-				std::string hud = std::to_string(GameData::hp_atual) + "." + std::to_string(GameData::hp_total);
+				std::string hud = std::to_string(GameData::hp_atual) + " I " + std::to_string(GameData::hp_total);
 				hp->SetText(hud);
 
 				stamina->SetPos(Vec2(Camera::GetPos().x, Camera::GetPos().y + 25));
@@ -295,6 +330,11 @@ void StageState :: Update (float dt) {
 
 
 				stamina->SetText(hud2);
+
+				mascara->SetPos(Vec2(Camera::GetPos().x, Camera::GetPos().y + 75));
+				std::string hud3 = std::to_string(GameData::item) ;
+				
+				mascara->SetText(hud3);
 			}
 		}
 		for (i=0;i<valor;i++){

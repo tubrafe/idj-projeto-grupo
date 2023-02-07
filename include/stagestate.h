@@ -38,6 +38,7 @@ class StageState : public State {
         Music* backgroundMusic;
         Text* hp;
         Text* stamina;
+        Text* mascara;
 
 
 
