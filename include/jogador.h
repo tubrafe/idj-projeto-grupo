@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "bloco.h"
 #include "sound.h"
+#include "hud.h"
 
 
 class GameObject;
@@ -21,7 +22,7 @@ class GameObject;
 class Jogador : public Component{
 
     public:
-        Jogador(GameObject& associated);
+        Jogador(GameObject& associated, Hud* hud);
         ~Jogador();
 
         void Update (float dt);
@@ -67,6 +68,7 @@ class Jogador : public Component{
 
         Timer* dash_cd;
         bool dash;
+        bool anima_dash;
 
         int numJumps;
         int pulosRestantes;
@@ -87,6 +89,11 @@ class Jogador : public Component{
 
         bool damaged;
         bool caiu;
+
+        Hud* barra_vida;
+
+        int velocidade_anterior;
+
 
 };
 

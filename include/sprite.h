@@ -40,6 +40,8 @@ class Sprite : public Component{
 
         void setTexture(std::string textura);
 
+        void  SetPos (Vec2 pos);
+
 
     private:
         SDL_Texture* texture;

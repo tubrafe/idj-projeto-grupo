@@ -253,3 +253,8 @@ void Sprite :: setTexture(std::string textura){
 
 }
 
+void Sprite :: SetPos (Vec2 pos){
+
+    associated.box.x = pos.x;
+    associated.box.y = pos.y;
+}

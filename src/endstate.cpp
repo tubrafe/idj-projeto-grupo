@@ -26,11 +26,11 @@ EndState :: EndState(){
         texto-> box.x = 150;
         texto-> box.y = 550;
 
-        Text* titulo = new Text (*texto, "./assets/font/Call me maybe.ttf", 30, Text::BLENDED, "Aperte Esc para sair ou espaco para tentar novamente!", SDL_Color{255, 0, 0, 255}, 0.5); 
+        Text* titulo = new Text (*texto, "./assets/font/Abel-Regular.ttf", 30, Text::BLENDED, "Aperte Esc para sair ou espaco para tentar novamente!", SDL_Color{255, 0, 0, 255}, 0.5); 
         texto->AddComponent(titulo);
         objectArray.emplace_back(texto);
 
-        backgroundMusic = new Music("./assets/audio/endStateWin.ogg");
+        backgroundMusic = new Music("./assets/audio/Tema_Final.wav");
 
     }
     //caso o jogador perca
@@ -48,11 +48,11 @@ EndState :: EndState(){
         texto-> box.x = 150;
         texto-> box.y = 550;
 
-        Text* titulo = new Text (*texto, "./assets/font/Call me maybe.ttf", 30, Text::BLENDED, "Aperte Esc para sair ou espaco para tentar novamente!", SDL_Color{255, 0, 0, 255}, 0.5); 
+        Text* titulo = new Text (*texto, "./assets/font/Abel-Regular.ttf", 30, Text::BLENDED, "Aperte Esc para sair ou espaco para tentar novamente!", SDL_Color{255, 0, 0, 255}, 0.5); 
         texto->AddComponent(titulo);
         objectArray.emplace_back(texto);
 
-        backgroundMusic = new Music("./assets/audio/endStateLose.ogg");
+        backgroundMusic = new Music("./assets/audio/Tema_Derrota.wav");
 
 
 

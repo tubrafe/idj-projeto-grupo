@@ -14,7 +14,7 @@
 Jogador* Jogador::player = nullptr;
 
 //vida e stamina passao a ser variaveis globais de todos os modulos ao inves de apenas o jogador
-Jogador :: Jogador(GameObject& associated) : Component(associated){
+Jogador :: Jogador(GameObject& associated, Hud* hud) : Component(associated){
 
 
     Sprite* personagem = new Sprite(associated,"./assets/img/pers_parado1.png" );
@@ -53,6 +53,7 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
     anima_grudado = false;
     damaged = false;
     caiu = false;
+    anima_dash = false;
 
     // guarda o ultimo lado pra o qual o personagem ta virado para usar o dash
     ladoVirado = true;
@@ -73,6 +74,11 @@ Jogador :: Jogador(GameObject& associated) : Component(associated){
         largura = jog->GetWidth();
         altura = jog->GetHeight();       
     }
+
+
+
+    barra_vida = hud;
+
 
 }
 
@@ -182,9 +188,16 @@ void Jogador :: Update (float dt){
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
             if(anima_grudado == false){
                 if(jog!= nullptr){
-                    jog->setTexture("./assets/img/grudado.png");
-                    jog->SetFrameCount(4);
-                    jog->SetFrameTime(0.2); 
+                    if(ladoGrudado == 1){
+                        jog->setTexture("./assets/img/grudado.png");
+                        jog->SetFrameCount(4);
+                        jog->SetFrameTime(0.2);
+                    } 
+                    else{
+                        jog->setTexture("./assets/img/grudado2.png");
+                        jog->SetFrameCount(4);
+                        jog->SetFrameTime(0.2);                        
+                    }
                 } 
                 sons->Stop();
                 anima_grudado = true;
@@ -200,7 +213,7 @@ void Jogador :: Update (float dt){
         }
         else{
             anima_grudado = false;
-            anima_caindo = false;
+
             if(speed.y < gravidadeMax){
                 speed.y = speed.y + gravidade;
             }
@@ -211,16 +224,24 @@ void Jogador :: Update (float dt){
     }
 
     // serve para colocar a animacao do personagem caindo
-    if((caindo)){
+    if((caindo) and  (!agarrado)){
 
         if((speed.y >= 0)){
 
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
-            if(anima_caindo == false){
+            if(((anima_caindo == false) or (InputManager :: GetInstance().IsKeyDown(SDLK_a)) or (InputManager :: GetInstance().IsKeyDown(SDLK_d))) and (!dash)){
                 if(jog!= nullptr){
-                    jog->setTexture("./assets/img/parado_ar.png");
-                    jog->SetFrameCount(2);
-                    jog->SetFrameTime(0.2); 
+                    if(ladoVirado){
+                        jog->setTexture("./assets/img/parado_ar.png");
+                        jog->SetFrameCount(2);
+                        jog->SetFrameTime(0.2);
+                    }
+                    else{
+                         jog->setTexture("./assets/img/parado_ar2.png");
+                        jog->SetFrameCount(2);
+                        jog->SetFrameTime(0.2);                       
+                    }
+
                 } 
                 if((!dash) and (!damaged) and (!caiu)){
                     sons->Stop();
@@ -245,7 +266,7 @@ void Jogador :: Update (float dt){
 
         if(jog!= nullptr){
 
-            if(andandod == true){
+            if((andandod == true) and (!dash)){
                 jog->setTexture("./assets/img/pers_parado1.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
@@ -258,7 +279,7 @@ void Jogador :: Update (float dt){
                 ladoVirado = true;
                 anima_grudado = false;
             }
-            else if(andandoe == true){
+            else if((andandoe == true) and (!dash)){
                 jog->setTexture("./assets/img/pers_parado2.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
@@ -273,7 +294,7 @@ void Jogador :: Update (float dt){
             }
 
             // esses dois casos servem para quando o jogador pular e parar de se movimentar, para que o sprite esteja correto dele parado
-            else if((speed_anterior == 1) and (!caindo)){
+            else if((speed_anterior == 1) and (!caindo) and (!dash)){
                 jog->setTexture("./assets/img/pers_parado1.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
@@ -286,7 +307,7 @@ void Jogador :: Update (float dt){
                 ladoVirado = true;
                 anima_grudado = false;
             }
-            else if((speed_anterior == -1) and (!caindo)){
+            else if((speed_anterior == -1) and (!caindo) and (!dash)){
                 jog->setTexture("./assets/img/pers_parado2.png");
                 jog->SetFrameCount(1);
                 jog->SetFrameTime(0);
@@ -384,7 +405,7 @@ void Jogador :: Update (float dt){
 
 
         // seta o sprite dele andando para a direita apenas uma vez enquanto isso se repetir
-        if((andandod == false) and (caindo == false) and (pulando == false)){
+        if((andandod == false) and (caindo == false) and (pulando == false) and (!dash)){
             
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
@@ -404,10 +425,10 @@ void Jogador :: Update (float dt){
             anima_caindo = false;
             parado = false;
             andandoe = false;
-            ladoVirado = true;
+
             anima_grudado = false;
         }
-
+            ladoVirado = true;
         if(speed.x < velocidade){
             speed.x = speed.x + 1;
         }
@@ -421,7 +442,7 @@ void Jogador :: Update (float dt){
         
 
         // seta o sprite dele andando para a esquerda apenas uma vez enquanto isso se repetir
-        if((andandoe == false) and (caindo == false) and (pulando == false)){
+        if((andandoe == false) and (caindo == false) and (pulando == false) and (!dash)){
             Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
             if(jog!= nullptr){
@@ -440,10 +461,10 @@ void Jogador :: Update (float dt){
             anima_caindo = false;
             parado = false;
             andandod = false;
-            ladoVirado = false; 
+ 
             anima_grudado = false;    
         }
-
+            ladoVirado = false;
         if(speed.x > -velocidade){
             speed.x = speed.x - 1;
         }
@@ -460,7 +481,7 @@ void Jogador :: Update (float dt){
             speed.x = speed.x - atrito;
             speed_anterior = 1;
 
-            if((!caindo) and (!andandod) and (!pulando)){
+            if((!caindo) and (!andandod) and (!pulando) and (!dash)){
                 Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
                 if(jog!= nullptr){
@@ -486,7 +507,7 @@ void Jogador :: Update (float dt){
             speed.x = speed.x + atrito;
             speed_anterior = -1;
 
-            if((!caindo) and (!andandoe) and (!pulando)){
+            if((!caindo) and (!andandoe) and (!pulando) and (!dash)){
                 Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
 
                 if(jog!= nullptr){
@@ -527,6 +548,27 @@ void Jogador :: Update (float dt){
 //atualiza a velocidade para ela ser bem grande durante o dash
     if(dash == true){
         
+        if(anima_dash == false){
+            anima_dash = true;
+            Sprite *jog =  (Sprite*)associated.GetComponent("sprite");
+
+            if(ladoVirado == true){
+                if(jog!= nullptr){
+                    jog->setTexture("./assets/img/dash.png");
+                    jog->SetFrameCount(1);
+                    jog->SetFrameTime(0.2);     
+                } 
+            }  
+            else{
+                if(jog!= nullptr){
+                    jog->setTexture("./assets/img/dash2.png");
+                    jog->SetFrameCount(1);
+                    jog->SetFrameTime(0.2);     
+                } 
+
+            }    
+        }
+
         if(dash_cd->Get()<0.2){
             if(ladoVirado == true){
                 speed.x = 100;
@@ -536,6 +578,7 @@ void Jogador :: Update (float dt){
             }
         }
         else{
+            anima_dash = false;
             dash = false;
             speed.x = 0;
         }
@@ -555,6 +598,24 @@ void Jogador :: Update (float dt){
     associated.box.x = atual.x;
     associated.box.y = atual.y;
 
+
+	barra_vida->SetPos(Vec2(associated.box.x-15, associated.box.y-80));
+
+    if(GameData::hp_atual == 5){
+	    barra_vida->SetTexture("./assets/img/vida_5.png");
+    }
+    else if(GameData::hp_atual == 4){
+	    barra_vida->SetTexture("./assets/img/vida_4.png");
+    }
+    else if(GameData::hp_atual == 3){
+	    barra_vida->SetTexture("./assets/img/vida_3.png");
+    }
+    else if(GameData::hp_atual == 2){
+	    barra_vida->SetTexture("./assets/img/vida_2.png");
+    }
+    else{
+	    barra_vida->SetTexture("./assets/img/vida_1.png");
+    }
 
     // caso o jogador morra
     if(GameData::hp_atual <=0 ){
@@ -584,7 +645,8 @@ void Jogador :: Update (float dt){
 
         temp.AddObject(morte);
 
-
+        GameData::checkPointX = 0;
+        GameData::checkPointY = 0;
 
     }
 
@@ -874,8 +936,8 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
     if(chao->getTipo() == "lava"){
 
         GameData::hp_atual = GameData::hp_atual - 1;
-        associated.box.x = ultimoContatoX;
-        associated.box.y = ultimoContatoY;
+        associated.box.x = GameData::checkPointX;
+        associated.box.y = GameData::checkPointY;
         speed.x = 0;
         speed.y = 0;
         GameData::stamina_atual = GameData::stamina_total;

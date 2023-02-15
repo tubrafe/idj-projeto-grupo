@@ -13,7 +13,7 @@ TitleState :: TitleState(){
     objeto->box.x = 0;
     objeto->box.y = 0;
 
-    Sprite* tela = new Sprite(*objeto,"./assets/img/title.jpg");
+    Sprite* tela = new Sprite(*objeto,"./assets/img/menu.png");
 
     objeto->AddComponent(tela);
 
@@ -22,7 +22,7 @@ TitleState :: TitleState(){
 
     GameObject* texto = new GameObject();
 
-    Text* titulo = new Text (*texto, "./assets/font/Call me maybe.ttf", 50, Text::BLENDED, "Aperte espaco para comecar!", SDL_Color{255, 0, 0, 255}, 0.5);
+    Text* titulo = new Text (*texto, "./assets/font/Abel-Regular.ttf", 50, Text::BLENDED, "Aperte espaco para comecar!", SDL_Color{255, 0, 0, 255}, 0.5);
 
     texto-> box.x = 200;
     texto-> box.y = 500;
@@ -33,7 +33,7 @@ TitleState :: TitleState(){
     timer = new Timer();
     cooldown = 0.2;
 
-    backgroundMusic = new Music("./assets/audio/titulo.mp3");
+    backgroundMusic = new Music("./assets/audio/Tema_Menu.wav");
 
 }
 

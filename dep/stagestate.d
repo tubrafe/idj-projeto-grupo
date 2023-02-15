@@ -312,6 +312,7 @@ dep/stagestate.d bin/stagestate.o: src/stagestate.cpp \
  src/../include/state.h src/../include/titlestate.h \
  src/../include/bloco.h src/../include/sprite.h src/../include/collider.h \
  src/../include/jogador.h src/../include/bloco.h src/../include/sound.h \
+ src/../include/hud.h src/../include/hud.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/fstream \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h \
@@ -670,6 +671,8 @@ src/../include/collider.h:
 src/../include/jogador.h:
 src/../include/bloco.h:
 src/../include/sound.h:
+src/../include/hud.h:
+src/../include/hud.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/fstream:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/codecvt.h:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/mingw32/bits/basic_file.h:

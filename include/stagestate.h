@@ -33,10 +33,12 @@ class StageState : public State {
         void Pause();
         void Resume();
 
+        void construirMapa();
+
     private:
         TileSet* tileSet;
         Music* backgroundMusic;
-        Text* hp;
+        Sprite* hp;
         Text* stamina;
         Text* mascara;
 

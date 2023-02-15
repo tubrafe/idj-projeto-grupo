@@ -276,7 +276,7 @@ dep/jogador.d bin/jogador.o: src/jogador.cpp src/../include/jogador.h \
  C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h \
  src/../include/sound.h \
  D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h \
- src/../include/sprite.h src/../include/state.h \
+ src/../include/hud.h src/../include/sprite.h src/../include/state.h \
  src/../include/../include/music.h \
  src/../include/../include/SDL_include.h \
  src/../include/../include/sprite.h \
@@ -592,6 +592,7 @@ C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/deque.tcc:
 C:/TDM-GCC-32/lib/gcc/mingw32/10.3.0/include/c++/bits/stl_queue.h:
 src/../include/sound.h:
 D:\Users\tubra\Desktop\SDL2-2.0.22\i686-w64-mingw32/include/SDL2/SDL_mixer.h:
+src/../include/hud.h:
 src/../include/sprite.h:
 src/../include/state.h:
 src/../include/../include/music.h:
