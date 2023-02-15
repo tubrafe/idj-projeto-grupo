@@ -374,6 +374,8 @@ void Jogador :: Update (float dt){
                 jog->setTexture("./assets/img/subida2.png");
             }
             sons->Stop();
+            sons->setSound("./assets/audio/pulo.wav");
+            sons->Play();
             jog->SetFrameCount(3);
             jog->SetFrameTime(0.2); 
         }
@@ -629,13 +631,10 @@ void Jogador :: Update (float dt){
 
         Camera::Unfollow();
 
-        Sprite* explosao = new Sprite(*morte, "./assets/img/penguindeath.png" , 5, 0.2, 1);
-
-        morte->AddComponent(explosao);
 
         State& temp = Game::GetInstance().GetCurrentState();
 
-        Sound* som = new Sound(*morte, "./assets/audio/boom.wav");
+        Sound* som = new Sound(*morte, "./assets/audio/dano.wav");
 
         som->Play();
 
