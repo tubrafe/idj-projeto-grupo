@@ -1069,14 +1069,14 @@ void StageState:: construirMapa(){
 
 	GameObject* lava3 = new GameObject();
 
-	Bloco* danger3 = new Bloco(*lava3,"./assets/img/lava.png",-7408,250, "lava", Vec2(4,1.2));
+	Bloco* danger3 = new Bloco(*lava3,"./assets/img/lava.png",-7408,250, "lava", Vec2(1,1));
 
 	lava3->AddComponent(danger3);
 	objectArray.emplace_back(lava3);
 
 	GameObject* lava4 = new GameObject();
 
-	Bloco* danger4 = new Bloco(*lava4,"./assets/img/lava.png",-14816,250, "lava", Vec2(4,1.2));
+	Bloco* danger4 = new Bloco(*lava4,"./assets/img/lava.png",-14816,250, "lava", Vec2(1,1));
 
 	lava4->AddComponent(danger4);
 	objectArray.emplace_back(lava4);
@@ -1084,14 +1084,14 @@ void StageState:: construirMapa(){
 
 	GameObject* lava = new GameObject();
 
-	Bloco* perigo = new Bloco(*lava,"./assets/img/lava.png",0,250, "lava", Vec2(4,1.2));
+	Bloco* perigo = new Bloco(*lava,"./assets/img/lava.png",0,250, "lava", Vec2(1,1));
 
 	lava->AddComponent(perigo);
 	objectArray.emplace_back(lava);
 
 	GameObject* lava2 = new GameObject();
 
-	Bloco* perigo14 = new Bloco(*lava2,"./assets/img/lava.png",7408,250, "lava", Vec2(4,1.2));
+	Bloco* perigo14 = new Bloco(*lava2,"./assets/img/lava.png",7408,250, "lava", Vec2(1,1));
 
 	lava2->AddComponent(perigo14);
 	objectArray.emplace_back(lava2);
