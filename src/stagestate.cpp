@@ -877,7 +877,7 @@ void StageState:: construirMapa(){
 
 
 	GameObject* bloco_final = new GameObject();
-	Bloco* vitoria = new Bloco(*bloco_final,"./assets/img/camp_aceso.png",10800,-25 , "vitoria", Vec2(1,1));
+	Bloco* vitoria = new Bloco(*bloco_final,"./assets/img/arvore.png",11000,-130 , "vitoria", Vec2(1,1));
 
 	bloco_final->AddComponent(vitoria);
 	objectArray.emplace_back(bloco_final);
