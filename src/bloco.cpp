@@ -130,6 +130,20 @@ void Bloco :: NotifyCollision ( GameObject& other){
 
             }
 
+        }
+            if(this->tipo == "garra"){
+
+            if(InputManager :: GetInstance().KeyPress(SDLK_q)){
+
+                GameData::garra = 1;
+                GameObject* morte1 = new GameObject();
+
+                morte1->box = associated.box;
+
+                associated.RequestDelete(); 
+
+            }
+
         }    
 
     }

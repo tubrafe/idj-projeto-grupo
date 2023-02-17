@@ -76,8 +76,10 @@ Jogador :: Jogador(GameObject& associated, Hud* hud) : Component(associated){
     }
 
 
-
+    dano_gas = false;
     barra_vida = hud;
+
+    gas_timer = new Timer();
 
 
 }
@@ -129,6 +131,13 @@ void Jogador :: Update (float dt){
 
     }
 
+
+    gas_timer->Update(dt);
+    if(gas_timer->Get() > 1.5)
+    {
+        dano_gas = true;
+        gas_timer->Restart();
+    }
 
     if(!damaged){
 
@@ -348,6 +357,9 @@ void Jogador :: Update (float dt){
                 sons->Play();
                 jog->SetFrameCount(3);
                 jog->SetFrameTime(0.2); 
+
+                
+
             }        
         
         parado = false;
@@ -644,8 +656,7 @@ void Jogador :: Update (float dt){
 
         temp.AddObject(morte);
 
-        GameData::checkPointX = 0;
-        GameData::checkPointY = 0;
+
 
     }
 
@@ -733,7 +744,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
         else if((chao->Contains(Vec2(associated.box.x, associated.box.y)) and (chao->Contains(Vec2(associated.box.x, associated.box.y + associated.box.h))))){
 
             associated.box.x = chao->getX() + chao->getLength();
-            agarrado = true;
+            if(GameData::garra == 1){
+                 agarrado = true;
+            }
             ladoGrudado = 1;
             speed.x = 0;
 
@@ -742,7 +755,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
         else if((chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y)) and (chao->Contains(Vec2(associated.box.x + associated.box.w, associated.box.y + associated.box.h))))){
 
             associated.box.x = chao->getX() - largura;
-            agarrado = true;
+            if(GameData::garra == 1){
+                agarrado = true;
+            }
             ladoGrudado = 2;
             speed.x = 0;
 
@@ -764,7 +779,23 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 caiu = true;
                 sons->Stop();
                 sons->setSound("./assets/audio/queda.wav");
-                sons->Play();                       
+                sons->Play();    
+
+                GameObject* po = new GameObject();
+
+                po->box.x = associated.box.x;  
+                po->box.y = associated.box.y + associated.box.h - 10;
+
+                Sprite* poeira = new Sprite(*po, "./assets/img/poeira.png" , 1, 1, 0.3);
+
+                po->AddComponent(poeira);
+
+                State& temp = Game::GetInstance().GetCurrentState();
+
+
+                temp.AddObject(po);  
+
+
             }
             ultimoContatoY = associated.box.y;
             pulosRestantes = numJumps;
@@ -787,7 +818,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             if(speed.y < 0){
 
                 associated.box.x = chao->getX() - largura;
-                agarrado = true;
+                if(GameData::garra == 1){
+  agarrado = true;
+}
                 ladoGrudado = 2;
                 speed.x = 0;
 
@@ -797,7 +830,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 if(posyh_anterior > chao->getY()){
 
                     associated.box.x = chao->getX() - largura;
-                    agarrado = true;
+                    if(GameData::garra == 1){
+  agarrado = true;
+}
                     ladoGrudado = 2;
                     speed.x = 0;                    
                 
@@ -817,7 +852,21 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                         caiu = true;
                         sons->Stop();
                         sons->setSound("./assets/audio/queda.wav");
-                        sons->Play();                       
+                        sons->Play();  
+
+                    GameObject* po = new GameObject();
+
+                    po->box.x = associated.box.x;  
+                    po->box.y = associated.box.y + associated.box.h - 10;
+
+                    Sprite* poeira = new Sprite(*po, "./assets/img/poeira.png" , 1, 1, 0.3);
+
+                    po->AddComponent(poeira);
+
+                    State& temp = Game::GetInstance().GetCurrentState();
+
+
+                    temp.AddObject(po);                        
                     }
                     ultimoContatoY = associated.box.y;
                     pulosRestantes = numJumps;
@@ -833,7 +882,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             if(speed.y < 0){
             
                 associated.box.x = chao->getX() + chao->getLength();
-                agarrado = true;
+                if(GameData::garra == 1){
+  agarrado = true;
+}
                 ladoGrudado = 1;
                 speed.x = 0;
 
@@ -842,7 +893,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 if(posyh_anterior > chao->getY()){
 
                     associated.box.x = chao->getX() + chao->getLength();
-                    agarrado = true;
+                    if(GameData::garra == 1){
+  agarrado = true;
+}
                     ladoGrudado = 1;
                     speed.x = 0;                  
                 
@@ -862,7 +915,25 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                         caiu = true;
                         sons->Stop();
                         sons->setSound("./assets/audio/queda.wav");
-                        sons->Play();                       
+                        sons->Play();   
+
+                    GameObject* po = new GameObject();
+
+                    po->box.x = associated.box.x;  
+                    po->box.y = associated.box.y + associated.box.h - 10;
+
+                    Sprite* poeira = new Sprite(*po, "./assets/img/poeira.png" , 1, 1, 0.3);
+
+                    po->AddComponent(poeira);
+
+                    State& temp = Game::GetInstance().GetCurrentState();
+
+
+                    temp.AddObject(po);  
+
+
+
+                temp.AddObject(po);                      
                     }                    
                     ultimoContatoY = associated.box.y;
                     caindo = false;
@@ -878,7 +949,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             if(speed.y > 0){
             
                 associated.box.x = chao->getX() + chao->getLength();
-                agarrado = true;
+                if(GameData::garra == 1){
+  agarrado = true;
+}
                 ladoGrudado = 1;
                 speed.x = 0;
 
@@ -888,7 +961,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 if(posy_anterior < chao->getY() + chao->getHigh()){
 
                     associated.box.x = chao->getX() + chao->getLength();
-                    agarrado = true;
+                    if(GameData::garra == 1){
+  agarrado = true;
+}
                     ladoGrudado = 1;
                     speed.x = 0;                 
                 
@@ -907,7 +982,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             if(speed.y >0){
             
                 associated.box.x = chao->getX() -largura;
-                agarrado = true;
+                if(GameData::garra == 1){
+  agarrado = true;
+}
                 ladoGrudado = 2;
                 speed.x = 0;
 
@@ -916,7 +993,9 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
                 if(posy_anterior < chao->getY() + chao->getHigh()){
 
                     associated.box.x = chao->getX() -largura;
-                    agarrado = true;
+                    if(GameData::garra == 1){
+  agarrado = true;
+}
                     ladoGrudado = 2;
                     speed.x = 0;             
                 
@@ -954,6 +1033,28 @@ void Jogador :: movimentacaoTipoChao(Bloco *chao){
             GameData::checkPointX = chao->getX();
             GameData::checkPointY = chao->getY();
         }
+      }
+        if(chao->getTipo() == "gas" && GameData::item == 0){
 
+
+                if(dano_gas == true){
+                    GameData::hp_atual = GameData::hp_atual - 1;
+                    GameData::stamina_atual = GameData::stamina_total;
+                    dano_gas = false;
+                }
+
+            }
+
+      if(chao->getTipo() == "mola"){
+
+        if(InputManager :: GetInstance().KeyPress(SDLK_SPACE)){
+            speed.y = -60;
+        }
+      }
+      if(chao->getTipo() == "vitoria"){
+            if(InputManager :: GetInstance().KeyPress(SDLK_x)){
+                GameData::playerVictory = true;
+
+        }
+      }
     }  
-}

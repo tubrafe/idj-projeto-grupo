@@ -39,7 +39,7 @@ class StageState : public State {
         TileSet* tileSet;
         Music* backgroundMusic;
         Sprite* hp;
-        Text* stamina;
+        Sprite* stamina;
         Text* mascara;
 
 

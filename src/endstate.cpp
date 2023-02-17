@@ -40,7 +40,7 @@ EndState :: EndState(){
         bg->box.x = 0;
         bg->box.y = 0;
 
-        Sprite* tela = new Sprite(*bg,"./assets/img/lose.jpg");
+        Sprite* tela = new Sprite(*bg,"./assets/img/lose.png");
         bg->AddComponent(tela);
         objectArray.emplace_back(bg);
 

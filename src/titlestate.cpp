@@ -20,15 +20,6 @@ TitleState :: TitleState(){
     objectArray.emplace_back(objeto);
 
 
-    GameObject* texto = new GameObject();
-
-    Text* titulo = new Text (*texto, "./assets/font/Abel-Regular.ttf", 50, Text::BLENDED, "Aperte espaco para comecar!", SDL_Color{255, 0, 0, 255}, 0.5);
-
-    texto-> box.x = 200;
-    texto-> box.y = 500;
-
-    texto->AddComponent(titulo);
-    objectArray.emplace_back(texto);
 
     timer = new Timer();
     cooldown = 0.2;

@@ -94,6 +94,9 @@ class Jogador : public Component{
 
         int velocidade_anterior;
 
+        Timer* gas_timer;
+        bool dano_gas;
+
 
 };
 
